@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: 'M Saans 652';
+  /* Placeholder for M Saans 652 - User will provide actual font files in /public/fonts/ */
+  src: local('M Saans 652'), local('MSaans-652');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: 'M Saans Variable Light';
+  /* Placeholder for M Saans Variable Light - User will provide actual font files in /public/fonts/ */
+  src: local('M Saans Variable Light'), local('MSaans-VariableLight');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-primary: #a819dd;
+  --color-accent: #141414;
+  --color-border-subtle: rgba(20, 20, 20, 0.08);
+  --color-background: #ffffff;
+
+  --font-heading: "M Saans 652", system-ui, -apple-system, sans-serif;
+  --font-body: "M Saans Variable Light", system-ui, -apple-system, sans-serif;
+
+  --text-h1: clamp(36px, 8vw, 80px);
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.03em;
+
+  --text-h2: clamp(28px, 6vw, 56px);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.02em;
+
+  --text-body: 14px;
+  --text-body--line-height: 1.6;
+
+  --radius-brand: 10px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-accent);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
 }
