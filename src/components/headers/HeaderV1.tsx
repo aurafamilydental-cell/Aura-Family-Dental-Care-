@@ -41,7 +41,7 @@ export function HeaderV1() {
             href="/" 
             className="flex items-center z-10"
           >
-            <img alt="logo" src="/logo 2.png" alt="Aura Family Dental Care" className="h-7 md:h-10 w-auto object-contain scale-[2.4] md:scale-[1.8] origin-left" />
+            <img src="/logo 2.png" alt="Aura Family Dental Care" className="h-7 md:h-10 w-auto object-contain scale-[2.4] md:scale-[1.8] origin-left" />
           </Link>
 
           {/* Desktop Nav */}

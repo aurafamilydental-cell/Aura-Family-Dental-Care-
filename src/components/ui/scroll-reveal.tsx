@@ -56,7 +56,7 @@ interface ScrollRevealItemProps extends HTMLMotionProps<"div"> {
   children: React.ReactNode;
   yOffset?: number;
   duration?: number;
-  ease?: unknown;
+  ease?: any;
 }
 
 export const ScrollRevealItem = React.forwardRef<HTMLDivElement, ScrollRevealItemProps>(

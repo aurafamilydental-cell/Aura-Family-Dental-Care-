@@ -112,7 +112,7 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
 
       setBookingSuccess(true);
     } catch (err: unknown) {
-      setErrorMessage(err.message || "An unexpected error occurred. Please try again.");
+      setErrorMessage(err instanceof Error ? err.message : "An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

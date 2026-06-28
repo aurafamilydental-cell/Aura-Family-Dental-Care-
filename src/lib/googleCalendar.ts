@@ -132,7 +132,7 @@ export async function getCalendarAvailability(dateStr: string): Promise<string[]
       const slotEnd = new Date(`${dateStr}T${String(hour + 1).padStart(2, "0")}:00:00Z`);
 
       // Check if any event overlaps with this slot
-      const isOverlapping = events.some((event: unknown) => {
+      const isOverlapping = events.some((event: any) => {
         const eventStart = new Date(event.start.dateTime || event.start.date);
         const eventEnd = new Date(event.end.dateTime || event.end.date);
 
