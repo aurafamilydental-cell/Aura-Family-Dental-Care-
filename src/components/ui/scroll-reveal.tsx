@@ -56,6 +56,7 @@ interface ScrollRevealItemProps extends HTMLMotionProps<"div"> {
   children: React.ReactNode;
   yOffset?: number;
   duration?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ease?: any;
 }
 

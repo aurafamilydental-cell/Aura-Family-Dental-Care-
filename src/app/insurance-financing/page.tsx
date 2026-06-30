@@ -77,8 +77,8 @@ export default function InsuranceFinancing() {
               We've created a simple, direct-care membership program. For a flat annual fee, you get complete preventative care and discounts on restorative treatments without dealing with deductibles, waiting periods, or claim denials.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-2xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-[32px] shadow-lg hover:-translate-y-1 transition-transform">
+            <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 gap-8 text-left max-w-2xl mx-auto pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden">
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-[32px] shadow-lg hover:-translate-y-1 transition-transform w-[85vw] sm:w-[300px] md:w-auto shrink-0 snap-center md:snap-align-none">
                 <h4 className="font-heading text-2xl mb-2 text-white">Adult Membership</h4>
                 <p className="text-white text-3xl font-bold mb-4">$29 <span className="text-lg font-normal text-white/70">/ month</span></p>
                 <ul className="text-white/80 text-sm space-y-3 font-medium">
@@ -88,7 +88,7 @@ export default function InsuranceFinancing() {
                   <li className="flex gap-2"><span>•</span> 15% discount on all restorative care</li>
                 </ul>
               </div>
-              <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-[32px] shadow-lg hover:-translate-y-1 transition-transform">
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-[32px] shadow-lg hover:-translate-y-1 transition-transform w-[85vw] sm:w-[300px] md:w-auto shrink-0 snap-center md:snap-align-none">
                 <h4 className="font-heading text-2xl mb-2 text-white">Child Membership</h4>
                 <p className="text-white text-3xl font-bold mb-4">$19 <span className="text-lg font-normal text-white/70">/ month</span></p>
                 <ul className="text-white/80 text-sm space-y-3 font-medium">
@@ -110,8 +110,8 @@ export default function InsuranceFinancing() {
               If you don't have insurance or are paying out-of-pocket, here are typical starting costs for common diagnostic procedures.
             </p>
             
-            <div className="bg-white border border-border-subtle rounded-brand shadow-sm overflow-hidden">
-              <table className="w-full text-left border-collapse text-base">
+            <div className="bg-white border border-border-subtle rounded-brand shadow-sm overflow-x-auto">
+              <table className="w-full text-left border-collapse text-base min-w-[500px]">
                 <thead>
                   <tr className="bg-accent/5 font-heading text-accent border-b border-border-subtle">
                     <th className="p-6 text-lg">Procedure</th>

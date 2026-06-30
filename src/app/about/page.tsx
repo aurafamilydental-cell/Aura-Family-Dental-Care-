@@ -10,76 +10,84 @@ import { AnimatedText } from "@/components/ui/animated-underline-text-one";
 
 const teamMembers = [
   { 
-    name: "Dr. Mary Osei", 
-    role: "Lead Hygienist", 
+    name: "Dr. Mary Gyamfi Osei (DDS)", 
+    role: "Dentist", 
     trait: "✨ 10+ Years Exp", 
     image: "/staff 2.JPG",
-    description: "Dedicated to ensuring a comfortable and thorough cleaning experience, focusing on patient education and preventive care.",
+    description: "When she isn't crafting perfect smiles, you'll probably find her baking up a storm or debating the best coffee spots in town. She believes laughter is just as important as flossing.",
     education: "NYU College of Dentistry"
   },
   { 
-    name: "Marcus Chen", 
-    role: "Care Coordinator", 
+    name: "Sheena Asomdwoe Armah", 
+    role: "Nursing Officer", 
     trait: "🌟 5-Star Service", 
-    image: "/staff 3.JPG",
-    description: "Expert in patient relations, ensuring every visit is seamless, stress-free, and well-coordinated from start to finish.",
+    image: "/Sheena.png",
+    description: "The unofficial DJ of the clinic. Sheena keeps the vibes high, the playlists fresh, and has a magical ability to make even the most nervous patients feel like they're hanging out with a friend.",
     education: "UCLA Health Administration"
   },
   { 
-    name: "Dr. Elena Rostova", 
-    role: "Associate Dentist", 
+    name: "Judith Asiamah Nuamah", 
+    role: "Nursing Officer", 
     trait: "🦷 Cosmetic Expert", 
     image: "/staff 4.JPG",
-    description: "Specializes in advanced restorative treatments, complex dental implants, and cosmetic smile designs.",
+    description: "A self-proclaimed plant mom and skincare enthusiast. Judith brings a calm, zen-like energy to the clinic that makes everyone take a deep, relaxing breath the moment they walk in.",
     education: "University of Pennsylvania"
   },
   { 
-    name: "Sarah Jenkins", 
-    role: "Dental Assistant", 
+    name: "Mary Dunyo Amevoh", 
+    role: "Nurse", 
     trait: "💖 Pediatric Care", 
     image: "/staff 5.JPG",
-    description: "A gentle, warm specialist who focuses on preventive care, kids' oral health, and pain-free treatments.",
+    description: "Always armed with a warm smile and an endless supply of fun facts. Mary is our resident trivia champion and knows exactly how to distract you during a procedure.",
     education: "King's College London"
   },
   { 
-    name: "Dr. David Kim", 
-    role: "Orthodontist", 
+    name: "Esther Agyeman Aduah", 
+    role: "Administrator", 
     trait: "🎯 Invisalign Pro", 
-    image: "/staff 6.JPG",
-    description: "Dedicated to perfecting alignments through clear aligners (Invisalign) and modern cosmetic bonding.",
+    image: "/Esther Agyeman Duah.JPG",
+    description: "The organizational wizard who keeps us all in check. Esther runs on spreadsheets, iced lattes, and a secret stash of chocolate that she occasionally shares with the team.",
     education: "Harvard Dental Medicine"
   },
   { 
-    name: "Emily Clark", 
-    role: "Office Manager", 
+    name: "Grace Owusu Boamah", 
+    role: "Client Relation Specialist", 
     trait: "📅 Scheduling Ace", 
     image: "/staff 7.JPG",
-    description: "Ensures the clinic runs smoothly, handling insurance coordination and patient scheduling with efficiency.",
+    description: "Grace never forgets a face, a name, or a birthday. She’s a master conversationalist who can find out your whole life story before you even sit in the dental chair.",
     education: "Boston University"
   },
   { 
-    name: "Dr. Kelvin", 
-    role: "Specialist Dentist", 
+    name: "Kelvin Tackie", 
+    role: "Executive Assistant", 
     trait: "🔍 Precision Care", 
     image: "/Kelvin.JPG",
-    description: "Committed to delivering exceptional restorative and cosmetic dentistry.",
+    description: "Our go-to guy for literally everything. When he’s not putting out administrative fires with a smile, Kelvin is probably plotting his next big weekend adventure.",
     education: "KNUST School of Medicine and Dentistry"
   },
   { 
-    name: "Aisha", 
-    role: "Patient Experience", 
+    name: "Afsatu Dawud", 
+    role: "Client Relation Specialist", 
     trait: "💬 Friendly Guide", 
     image: "/staff 8.JPG",
-    description: "Dedicated to making your visit as smooth and comfortable as possible.",
+    description: "A bubbly ball of energy who genuinely believes a good chat can solve almost anything. Afsatu is the reason our waiting room sometimes sounds more like a cozy cafe.",
     education: "University of Ghana"
   },
   { 
-    name: "Grace", 
-    role: "Clinic Coordinator", 
+    name: "Comfort Dede", 
+    role: "Client Relation Specialist (Intern)", 
     trait: "📋 Detail Oriented", 
     image: "/staff 9.JPG",
-    description: "Ensuring all your administrative and scheduling needs are met with a smile.",
+    description: "Eager, bright, and an absolute sponge for knowledge. Comfort brings a fresh, contagious enthusiasm to the team and is on a mission to try every lunch spot near the clinic.",
     education: "GIMPA"
+  },
+  { 
+    name: "Lois Adinkrah", 
+    role: "Nurse", 
+    trait: "💖 Compassionate Care", 
+    image: "/Lois Adinkra - Nurse.JPG",
+    description: "Sweet, compassionate, and always ready with a comforting word. Lois has a knack for turning a stressful day around and is secretly the best storyteller in the office.",
+    education: "Certified Nursing Professional"
   }
 ];
 
@@ -114,10 +122,9 @@ export default function About() {
       </div>
 
       {/* Solid Reveal */}
-      <div className="absolute inset-x-0 bottom-0 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-out p-6 bg-white border-t border-gray-100 z-30 flex flex-col justify-end h-[40%]">
-        <h3 className="font-heading text-2xl text-accent mb-1">{member.name}</h3>
-        <p className="text-primary text-base font-semibold mb-3">{member.role}</p>
-        <p className="text-accent/70 text-sm leading-relaxed hidden xl:block">Dedicated professional committed to ensuring your visit is absolutely exceptional.</p>
+      <div className="absolute inset-x-0 bottom-0 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-out p-6 bg-white border-t border-gray-100 z-30 flex flex-col justify-center h-[45%]">
+        <p className="text-primary text-lg font-semibold mb-3">{member.role}</p>
+        <p className="text-accent/80 text-sm leading-relaxed hidden md:block">{member.description}</p>
       </div>
     </div>
   );
@@ -250,7 +257,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className="order-1 lg:order-1 flex flex-col items-start lg:pr-12">
+            <div className="order-1 lg:order-1 flex flex-col items-start lg:pr-12 lg:sticky lg:top-32">
               <div className="w-full aspect-square rounded-xl bg-accent/5 overflow-hidden mb-6 relative shadow-sm">
                  <Image src="/Mr Abekah.JPG" alt="Dr. Emmanuel Baah Abekah" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
               </div>
@@ -338,6 +345,3 @@ export default function About() {
     </div>
   );
 }
-
-
-
