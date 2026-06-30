@@ -19,11 +19,11 @@ export function HeaderV1() {
   }, []);
 
   // Base Desktop Classes (Always Pill)
-  const desktopHeader = "md:fixed md:top-4 md:left-1/2 md:-translate-x-1/2 md:w-[95%] md:max-w-6xl md:px-0";
-  const desktopInner = `md:rounded-full md:border md:px-8 md:py-3 md:flex md:items-center md:justify-between transition-all duration-500 ${
+  const desktopHeader = "xl:fixed xl:top-4 xl:left-1/2 xl:-translate-x-1/2 xl:w-[95%] xl:max-w-6xl xl:px-0";
+  const desktopInner = `xl:rounded-full xl:border xl:px-8 xl:py-3 xl:flex xl:items-center xl:justify-between transition-all duration-500 ${
     isScrolled 
-      ? "md:bg-white/90 md:backdrop-blur-xl md:border-white/60 md:shadow-lg" 
-      : "md:bg-white/90 md:backdrop-blur-xl md:border-white/60 md:shadow-md"
+      ? "xl:bg-white/90 xl:backdrop-blur-xl xl:border-white/60 xl:shadow-lg" 
+      : "xl:bg-white/90 xl:backdrop-blur-xl xl:border-white/60 xl:shadow-md"
   }`;
 
   // Mobile Classes (Solid White Full-Width)
@@ -41,13 +41,13 @@ export function HeaderV1() {
             href="/" 
             className="flex items-center z-10"
           >
-            <img src="/logo 2.png" alt="Aura Family Dental Care" className="h-7 md:h-10 w-auto object-contain scale-[2.4] md:scale-[1.8] origin-left" />
+            <img src="/logo 2.png" alt="Aura Family Dental Care" className="h-7 xl:h-10 w-auto object-contain scale-[2.4] xl:scale-[1.8] origin-left" />
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-            {["About", "Treatments", "Patient Info", "Financing"].map((item, i) => {
-              const href = item === "About" ? "/about" : item === "Treatments" ? "/services" : item === "Patient Info" ? "/new-patients" : "/insurance-financing";
+          <nav className="hidden xl:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+            {["Home", "About", "Treatments", "Experience", "Contact"].map((item, i) => {
+              const href = item === "Home" ? "/" : item === "About" ? "/about" : item === "Treatments" ? "/services" : item === "Experience" ? "/new-patients" : "/contact";
               return (
                 <Link
                   key={i}
@@ -72,7 +72,7 @@ export function HeaderV1() {
             
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden focus:outline-none text-accent p-2"
+              className="xl:hidden focus:outline-none text-accent p-2"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMobileMenuOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />}
@@ -82,14 +82,15 @@ export function HeaderV1() {
         </div>
 
         {/* Mobile Menu Dropdown */}
-        <div className={`md:hidden absolute left-0 w-full shadow-xl transition-all duration-300 overflow-hidden bg-white border-b border-gray-200 text-accent ${
+        <div className={`xl:hidden absolute left-0 w-full shadow-xl transition-all duration-300 overflow-hidden bg-white border-b border-gray-200 text-accent ${
           isMobileMenuOpen ? "max-h-96 opacity-100 p-6" : "max-h-0 opacity-0 pointer-events-none"
         } top-full`}>
           <nav className="flex flex-col items-center gap-5">
+            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-lg text-accent/80 hover:text-primary transition-colors">Home</Link>
             <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-lg text-accent/80 hover:text-primary transition-colors">About</Link>
             <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-lg text-accent/80 hover:text-primary transition-colors">Treatments</Link>
-            <Link href="/new-patients" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-lg text-accent/80 hover:text-primary transition-colors">Patient Info</Link>
-            <Link href="/insurance-financing" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-lg text-accent/80 hover:text-primary transition-colors">Financing</Link>
+            <Link href="/new-patients" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-lg text-accent/80 hover:text-primary transition-colors">Experience</Link>
+            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="font-medium text-lg text-accent/80 hover:text-primary transition-colors">Contact</Link>
             <button onClick={() => { setIsMobileMenuOpen(false); window.dispatchEvent(new Event("open-booking-drawer")); }} className="py-3.5 px-8 rounded-full font-semibold w-full max-w-[200px] text-center mt-3 bg-primary text-white shadow-md hover:bg-accent transition-all">Book Visit</button>
           </nav>
         </div>

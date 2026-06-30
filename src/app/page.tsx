@@ -39,9 +39,9 @@ const arcImages = [
   "/no styrile!.JPG",
   "/game section - 1.JPG",
   "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1584516150909-c43483ee7932?q=80&w=800&auto=format&fit=crop",
+  "/emergency-room.jpg",
+  "/teeth-whitening-v3.png",
+  "/machine-1.JPG",
 ];
 
 export default function Home() {
@@ -71,57 +71,57 @@ export default function Home() {
 
            ======================================================== */}
 
-        <section className="relative z-30 bg-[#0f0521] border-y border-white/10 py-6 text-white">
+        <section className="relative z-30 bg-[#f5d5f5] border-y border-black/10 py-6 text-[#141414]">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="flex flex-wrap justify-around md:justify-between items-center gap-y-6 gap-x-4">
               <div className="flex items-center gap-4">
-                <span className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white">
+                <span className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#141414]">
                   500+
                 </span>
 
-                <span className="text-[10px] sm:text-xs text-[#ddd6fe] uppercase tracking-widest font-bold leading-tight">
+                <span className="text-[10px] sm:text-xs text-[#141414]/80 uppercase tracking-widest font-bold leading-tight">
                   Satisfied
                   <br />
                   Patients
                 </span>
               </div>
 
-              <div className="hidden md:block w-px h-10 bg-white/20" />
+              <div className="hidden md:block w-px h-10 bg-[#141414]/20" />
 
               <div className="flex items-center gap-4">
-                <span className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white">
+                <span className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#141414]">
                   15+
                 </span>
 
-                <span className="text-[10px] sm:text-xs text-[#ddd6fe] uppercase tracking-widest font-bold leading-tight">
+                <span className="text-[10px] sm:text-xs text-[#141414]/80 uppercase tracking-widest font-bold leading-tight">
                   Expert
                   <br />
                   Specialists
                 </span>
               </div>
 
-              <div className="hidden lg:block w-px h-10 bg-white/20" />
+              <div className="hidden lg:block w-px h-10 bg-[#141414]/20" />
 
               <div className="flex items-center gap-4">
-                <span className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white">
+                <span className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#141414]">
                   24/7
                 </span>
 
-                <span className="text-[10px] sm:text-xs text-[#ddd6fe] uppercase tracking-widest font-bold leading-tight">
+                <span className="text-[10px] sm:text-xs text-[#141414]/80 uppercase tracking-widest font-bold leading-tight">
                   Emergency
                   <br />
                   Support
                 </span>
               </div>
 
-              <div className="hidden xl:block w-px h-10 bg-white/20" />
+              <div className="hidden xl:block w-px h-10 bg-[#141414]/20" />
 
               <div className="flex items-center gap-4">
-                <span className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white">
+                <span className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#141414]">
                   4.9
                 </span>
 
-                <span className="text-[10px] sm:text-xs text-[#ddd6fe] uppercase tracking-widest font-bold leading-tight">
+                <span className="text-[10px] sm:text-xs text-[#141414]/80 uppercase tracking-widest font-bold leading-tight">
                   Average
                   <br />
                   Rating

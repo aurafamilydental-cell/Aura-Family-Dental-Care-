@@ -21,10 +21,8 @@ export default function Footer() {
             <div className="flex flex-col space-y-2 md:space-y-3">
               <h4 className="font-semibold text-accent text-[15px] mb-1">Quick Links:</h4>
               <Link href="/" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Home</Link>
-              <Link href="/clinics" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Clinics</Link>
-              <Link href="/pricing" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Pricing</Link>
               <Link href="/about" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">About</Link>
-              <Link href="/locations" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Locations</Link>
+              <Link href="/contact" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Contact</Link>
             </div>
 
             {/* Legal */}
@@ -32,24 +30,21 @@ export default function Footer() {
               <h4 className="font-semibold text-accent text-[15px] mb-1">Legal</h4>
               <Link href="/privacy" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Terms of Service</Link>
+              <Link href="/accessibility" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Accessibility</Link>
             </div>
 
             {/* Services */}
             <div className="flex flex-col space-y-2 md:space-y-3">
               <h4 className="font-semibold text-accent text-[15px] mb-1">Services</h4>
-              <Link href="/services/implants" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Dental Implants</Link>
-              <Link href="/services/whitening" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Teeth Whitening</Link>
-              <Link href="/services/orthodontics" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Orthodontics</Link>
-              <Link href="/services/checkups" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Routine Checkups</Link>
+              <Link href="/services" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">All Treatments</Link>
+              <Link href="/before-after" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Before & After</Link>
             </div>
 
             {/* Patient Resources */}
             <div className="flex flex-col space-y-2 md:space-y-3">
               <h4 className="font-semibold text-accent text-[15px] mb-1">Patient Resources</h4>
-              <Link href="/information" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Information</Link>
-              <Link href="/insurance" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Insurance</Link>
-              <Link href="/faqs" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">FAQs</Link>
-              <Link href="/testimonials" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Testimonials</Link>
+              <Link href="/new-patients" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">New Patients</Link>
+              <Link href="/insurance-financing" className="text-[13px] font-medium text-black/80 hover:text-primary transition-colors">Insurance & Financing</Link>
             </div>
 
             {/* Social */}

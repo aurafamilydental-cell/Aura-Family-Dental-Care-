@@ -36,10 +36,10 @@ export default function BeforeAfterGallery() {
 
         {/* Gallery Grid */}
         <section className="py-12 px-6 md:px-12 bg-transparent mb-12">
-          <div className="max-w-6xl mx-auto space-y-24">
+          <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
             
             {/* Case 1 */}
-            <ScrollReveal staggerChildren={0.2} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <ScrollReveal staggerChildren={0.2} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="flex flex-col justify-center">
                 <ScrollRevealItem>
                   <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">Case study 01</span>
@@ -72,7 +72,7 @@ export default function BeforeAfterGallery() {
             </ScrollReveal>
 
             {/* Case 2 */}
-            <ScrollReveal staggerChildren={0.2} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center lg:flex-row-reverse">
+            <ScrollReveal staggerChildren={0.2} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center lg:flex-row-reverse">
               <div className="flex flex-col justify-center lg:order-2">
                 <ScrollRevealItem>
                   <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">Case study 02</span>
@@ -108,15 +108,15 @@ export default function BeforeAfterGallery() {
         </section>
 
         {/* CTA */}
-        <section className="py-24 px-6 md:px-12 text-center bg-transparent">
+        <section className="py-16 md:py-24 px-6 md:px-12 text-center bg-transparent">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-heading text-accent mb-6 tracking-tight">Ready to design your custom smile plan?</h2>
-            <p className="text-accent/70 text-xl mb-10 font-body">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading text-accent mb-6 tracking-tight">Ready to design your custom smile plan?</h2>
+            <p className="text-accent/70 text-lg md:text-xl mb-8 md:mb-10 font-body">
               Schedule a cosmetic consultation to explore what is possible for your teeth.
             </p>
             <button
               onClick={handleOpenBooking}
-              className="bg-primary text-white px-10 py-5 rounded-full font-semibold text-lg hover:bg-opacity-90 transition-all shadow-lg hover:shadow-primary/30 cursor-pointer inline-flex items-center gap-2"
+              className="bg-primary text-white px-8 py-4 md:px-10 md:py-5 rounded-full font-semibold text-base md:text-lg hover:bg-opacity-90 transition-all shadow-lg hover:shadow-primary/30 cursor-pointer w-full sm:w-auto inline-flex justify-center items-center gap-2"
             >
               <span>Schedule Your First Visit</span>
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

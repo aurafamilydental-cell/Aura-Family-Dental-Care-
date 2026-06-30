@@ -47,12 +47,12 @@ export default function NewPatients() {
               hidden: { opacity: 0 },
               visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
             }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-6 pb-6 md:pb-0 [&::-webkit-scrollbar]:hidden"
           >
             {/* Phase 1: Arrival (Spans 2 cols, Image Right) */}
             <motion.div 
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              className="md:col-span-2 relative overflow-hidden bg-white rounded-brand border border-border-subtle hover:border-primary/20 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col md:flex-row min-h-[320px]"
+              className="md:col-span-2 relative overflow-hidden bg-white rounded-brand border border-border-subtle hover:border-primary/20 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col md:flex-row min-h-[320px] w-[85vw] sm:w-[300px] md:w-auto shrink-0 snap-center md:snap-align-none"
             >
               <div className="p-6 md:p-12 lg:p-16 flex-grow flex-1 flex flex-col justify-center z-10">
                 <div>
@@ -61,7 +61,7 @@ export default function NewPatients() {
                   </span>
                   <h3 className="font-heading text-2xl text-accent mb-4">A Welcoming Arrival</h3>
                   <p className="text-accent/70 text-base leading-relaxed mb-6">
-                    Walk in and leave the clinic feeling behind. Marcus will greet you, help verify any details, and offer you a freshly prepared matcha, specialty tea, or warm treat. Relax in our lounge, listen to calming music, or play a game.
+                    Walk in and leave the clinic feeling behind. Grace will greet you, help verify any details, and offer you a freshly prepared matcha, specialty tea, or warm treat. Relax in our lounge, listen to calming music, or play a game.
                   </p>
 
                 </div>
@@ -82,7 +82,7 @@ export default function NewPatients() {
             {/* Phase 2: Consultation (Spans 1 col, Image Top) */}
             <motion.div 
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              className="md:col-span-1 relative overflow-hidden bg-white rounded-brand border border-border-subtle hover:border-primary/20 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col min-h-[320px]"
+              className="md:col-span-1 relative overflow-hidden bg-white rounded-brand border border-border-subtle hover:border-primary/20 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col min-h-[320px] w-[85vw] sm:w-[300px] md:w-auto shrink-0 snap-center md:snap-align-none"
             >
               <div className="relative w-full h-48 overflow-hidden">
                 <Image
@@ -108,7 +108,7 @@ export default function NewPatients() {
             {/* Phase 3: Diagnostics (Spans 1 col, Image Bottom) */}
             <motion.div 
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              className="md:col-span-1 relative overflow-hidden bg-white rounded-brand border border-border-subtle hover:border-primary/20 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col min-h-[320px]"
+              className="md:col-span-1 relative overflow-hidden bg-white rounded-brand border border-border-subtle hover:border-primary/20 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col min-h-[320px] w-[85vw] sm:w-[300px] md:w-auto shrink-0 snap-center md:snap-align-none"
             >
               <div className="p-8 flex-grow flex flex-col justify-start z-10">
                 <div>
@@ -134,7 +134,7 @@ export default function NewPatients() {
             {/* Phase 4: Care Plan (Spans 2 cols, Image Left) */}
             <motion.div 
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              className="md:col-span-2 relative overflow-hidden bg-white rounded-brand border border-border-subtle hover:border-primary/20 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col md:flex-row min-h-[320px]"
+              className="md:col-span-2 relative overflow-hidden bg-white rounded-brand border border-border-subtle hover:border-primary/20 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col md:flex-row min-h-[320px] w-[85vw] sm:w-[300px] md:w-auto shrink-0 snap-center md:snap-align-none"
             >
               <div className="relative w-full md:w-[45%] h-56 md:min-h-[600px] overflow-hidden">
                 <Image
@@ -166,7 +166,7 @@ export default function NewPatients() {
         </section>
 
         {/* FAQ Accordion Section */}
-        <section className="py-24 px-6 md:px-12 bg-transparent relative overflow-hidden">
+        <section className="py-24 px-6 md:px-12 bg-transparent relative">
           {/* Subtle background shapes if desired */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none"></div>

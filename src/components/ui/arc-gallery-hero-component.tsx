@@ -24,10 +24,10 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
   startAngle = 20,
   endAngle = 160,
   radiusLg = 520,
-  radiusMd = 400,
+  radiusMd = 350,
   radiusSm = 450,
   cardSizeLg = 180,
-  cardSizeMd = 140,
+  cardSizeMd = 110,
   cardSizeSm = 90,
   className = '',
   onBooking

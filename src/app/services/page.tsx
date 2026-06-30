@@ -9,11 +9,20 @@ import BookingDrawer from "@/components/BookingDrawer";
 import { AnimatedText } from "@/components/ui/animated-underline-text-one";
 import { ScrollReveal, ScrollRevealItem } from "@/components/ui/scroll-reveal";
 import { Sparkles, Users, Wrench, Baby, Stethoscope, Calendar } from "lucide-react";
+import { useState } from "react";
 
 export default function ServicesHub() {
+  const [hasScrolled, setHasScrolled] = useState(false);
+
   const handleOpenBooking = (e?: React.MouseEvent) => {
     e?.preventDefault();
     window.dispatchEvent(new Event("open-booking-drawer"));
+  };
+
+  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
+    if (!hasScrolled && e.currentTarget.scrollLeft > 10) {
+      setHasScrolled(true);
+    }
   };
 
   const servicesData = [
@@ -90,17 +99,24 @@ export default function ServicesHub() {
             textClassName="text-h2 text-accent leading-tight text-center"
             underlineClassName="text-primary"
           />
-          <p className="text-accent/70 text-lg leading-relaxed max-w-2xl mx-auto font-body">
-            We prioritize preserving your natural teeth and only recommend procedures that protect your long-term health. No pressure, no upselling.
+          <p className="text-accent/70 text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-body">
+            <span className="md:hidden">Conservative treatments for your health. No pressure.</span>
+            <span className="hidden md:inline">We prioritize preserving your natural teeth and only recommend procedures that protect your long-term health. No pressure, no upselling.</span>
           </p>
         </section>
 
         {/* Services Grid */}
-        <section className="py-12 px-6 md:px-12 mb-16 max-w-6xl mx-auto">
-          <ScrollReveal staggerChildren={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section className="py-12 px-6 md:px-12 mb-16 md:mb-24 max-w-6xl mx-auto">
+          <div className={`flex items-center justify-center mb-6 md:hidden transition-opacity duration-500 ${hasScrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+            <div className="flex items-center gap-2 bg-accent/5 border border-accent/10 text-accent/80 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+              <span>Swipe to explore</span>
+              <svg className="w-4 h-4 animate-pulse text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </div>
+          </div>
+          <ScrollReveal onScroll={handleScroll} staggerChildren={0.1} className="flex md:grid overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none [&::-webkit-scrollbar]:hidden md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8 md:pb-0">
             {servicesData.map((svc) => {
               
-              let cardClasses = "relative overflow-hidden group flex flex-col justify-between transition-all duration-300 min-h-[300px] rounded-brand backdrop-blur-md border shadow-lg ";
+              let cardClasses = "relative overflow-hidden group flex flex-col justify-between transition-all duration-300 min-h-[300px] rounded-brand backdrop-blur-md border shadow-lg w-[85vw] sm:w-[300px] md:w-auto snap-center shrink-0 md:shrink ";
               
               if (svc.isAction) {
                 cardClasses += "bg-primary/10 border-primary/30 p-8";
