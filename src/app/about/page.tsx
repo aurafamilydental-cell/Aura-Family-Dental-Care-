@@ -163,7 +163,7 @@ export default function About() {
           }}
         >
           {/* Front */}
-          <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-sm bg-gray-100" style={{ backfaceVisibility: "hidden" }}>
+          <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-sm bg-gray-100" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 z-10 mix-blend-multiply"></div>
             <Image src={member.image} alt={member.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
             <div className="absolute bottom-6 left-6 right-6 z-20">
@@ -172,7 +172,7 @@ export default function About() {
             </div>
           </div>
           {/* Back */}
-          <div className="absolute inset-0 rounded-2xl bg-white p-6 shadow-xl flex flex-col justify-center border border-gray-100" style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
+          <div className="absolute inset-0 rounded-2xl bg-white p-6 shadow-xl flex flex-col justify-center border border-gray-100" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
             <h3 className="font-heading text-xl text-accent mb-1">{member.name}</h3>
             <p className="text-primary font-semibold mb-4">{member.role}</p>
             <p className="text-accent/80 text-sm leading-relaxed mb-4">{member.description}</p>

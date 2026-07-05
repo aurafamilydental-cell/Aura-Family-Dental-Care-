@@ -172,7 +172,7 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
     header: "border-b border-gray-100",
     card: "p-5 border border-gray-100 bg-gray-50 rounded-2xl shadow-sm hover:bg-gray-100 hover:scale-[1.01] transition-all group",
     cardText: "text-accent group-hover:text-primary transition-colors",
-    input: "w-full px-4 py-3 border border-gray-200 bg-white rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-accent [&:-webkit-autofill]:shadow-[inset_0_0_0px_1000px_white] [&:-webkit-autofill]:-webkit-text-fill-color-accent",
+    input: "w-full px-4 py-3 border border-gray-200 bg-white rounded-xl focus:outline-none focus:border-gray-400 focus:ring-0 text-[16px] text-accent [&:-webkit-autofill]:shadow-[inset_0_0_0px_1000px_white] [&:-webkit-autofill]:-webkit-text-fill-color-accent",
     primaryBtn: "bg-gradient-to-r from-primary to-purple-500 text-white rounded-full shadow-lg shadow-primary/30 hover:shadow-xl hover:scale-[1.02] transition-all",
     secondaryBtn: "border border-gray-200 bg-white text-accent rounded-full hover:bg-gray-50 transition-all",
     slotBtn: "py-3 rounded-xl text-xs font-semibold border border-gray-200 bg-gray-50 text-accent hover:bg-gray-100 transition-all",
