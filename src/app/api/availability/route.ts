@@ -5,6 +5,8 @@ export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const date = searchParams.get("date"); // Expects YYYY-MM-DD
+    const duration = searchParams.get("duration");
+    const durationMinutes = duration ? parseInt(duration, 10) : 60;
 
     if (!date) {
       return NextResponse.json({ error: "Date parameter is required (format: YYYY-MM-DD)" }, { status: 400 });
@@ -16,7 +18,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Invalid date format. Use YYYY-MM-DD." }, { status: 400 });
     }
 
-    const availableSlots = await getCalendarAvailability(date);
+    const availableSlots = await getCalendarAvailability(date, durationMinutes);
     return NextResponse.json({ slots: availableSlots });
   } catch (error: unknown) {
     console.error("Availability API Error:", error);

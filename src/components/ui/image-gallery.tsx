@@ -2,12 +2,12 @@ import React from "react";
 import Image from "next/image";
 
 const images = [
-  { src: "/doctor-patient.JPG",                                                                                          alt: "Aura dentist reviewing treatment plan with patient on a tablet" },
-  { src: "/front desk.JPG",                                                                                               alt: "Aura Family Dental Care beautifully decorated front desk at grand opening" },
-  { src: "/game section.JPG",                                                                                             alt: "Aura clinic lounge and game area with TV, seating, and plants" },
-  { src: "/no styrile atmosphere.JPG",                                                                                    alt: "Patients and family relaxing comfortably in the Aura clinic waiting area" },
-  { src: "/banner.JPG",                                                                                                   alt: "Aura Family Dental Care clinic interior showing the brand signage and modern lighting" },
-  { src: "/gassed man smillinag.JPG",                                                                                    alt: "Happy patient smiling with confidence after treatment at Aura Family Dental Care" },
+  { src: "/patients/doctor-patient.webp",                                                                                          alt: "Aura dentist reviewing treatment plan with patient on a tablet" },
+  { src: "/facilities/front-desk.webp",                                                                                               alt: "Aura Family Dental Care beautifully decorated front desk at grand opening" },
+  { src: "/facilities/game-section.webp",                                                                                             alt: "Aura clinic lounge and game area with TV, seating, and plants" },
+  { src: "/facilities/no-styrile-atmosphere.webp",                                                                                    alt: "Patients and family relaxing comfortably in the Aura clinic waiting area" },
+  { src: "/hero/banner.webp",                                                                                                   alt: "Aura Family Dental Care clinic interior showing the brand signage and modern lighting" },
+  { src: "/patients/gassed-man-smillinag.webp",                                                                                    alt: "Happy patient smiling with confidence after treatment at Aura Family Dental Care" },
 ];
 
 export default function ImageGallery() {

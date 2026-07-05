@@ -63,8 +63,8 @@ export default function BeforeAfterGallery() {
               </div>
               <ScrollRevealItem>
                 <BeforeAfterSlider
-                  beforeImage="/smile-before.jpg"
-                  afterImage="/smile-after.jpg"
+                  beforeImage="/patients/smile-before.webp"
+                  afterImage="/patients/smile-after.webp"
                   beforeLabel="Before Treatment"
                   afterLabel="After Composite Bonding"
                 />
@@ -96,8 +96,8 @@ export default function BeforeAfterGallery() {
               </div>
               <ScrollRevealItem className="lg:order-1">
                 <BeforeAfterSlider
-                  beforeImage="/smile-before.jpg"
-                  afterImage="/smile-after.jpg"
+                  beforeImage="/patients/smile-before.webp"
+                  afterImage="/patients/smile-after.webp"
                   beforeLabel="Before Treatment"
                   afterLabel="After Veneers"
                 />

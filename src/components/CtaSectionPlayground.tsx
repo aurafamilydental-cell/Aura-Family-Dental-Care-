@@ -38,7 +38,7 @@ export default function CtaSectionPlayground() {
           {/* Absolute white porcelain tooth inside card (clipped by card boundary) */}
           <div className="absolute left-0 bottom-0 top-0 w-[42%] select-none pointer-events-none z-10">
             <Image
-              src="/white_glossy_tooth.png"
+              src="/brand/white-glossy-tooth.webp"
               fill
               className="object-contain object-left-bottom scale-105 origin-bottom-left"
               alt="Glossy White Porcelain Tooth Graphic"

@@ -39,9 +39,9 @@ export default function PediatricDentistry() {
             
             {/* Copy */}
             <div className="space-y-6">
-              <h2 className="text-3xl font-heading text-accent">Making children's visits positive.</h2>
-              <p className="text-accent/70 text-lg leading-relaxed">
-                A child's early dental experiences shape their view of oral care for life. Our team uses positive reinforcement, gentle explanations, and distractions to make cleanings feel like a breeze.
+              <h2 className="text-h2 md:text-3xl font-heading text-accent leading-tight text-center md:text-left">Making children's visits positive.</h2>
+              <p className="text-accent/70 text-lg leading-relaxed text-center md:text-left">
+                We use positive reinforcement, gentle explanations, and fun distractions to make your child's dental visit a breeze.
               </p>
               
               <div className="space-y-4 pt-4">
@@ -49,21 +49,21 @@ export default function PediatricDentistry() {
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Favorite Shows on Ceiling Screens</h4>
-                    <p className="text-accent/60 text-base">We have screens mounted on the ceiling above our dental chairs so kids can stream their favorite cartoon or movie.</p>
+                    <p className="text-accent/60 text-lg md:text-base">We have screens mounted on the ceiling above our dental chairs so kids can stream their favorite cartoon or movie.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Kid-Friendly Terminology</h4>
-                    <p className="text-accent/60 text-base">We call the suction the "thirsty straw" and the polisher the "tooth tickler" to avoid scary clinical jargon.</p>
+                    <p className="text-accent/60 text-lg md:text-base">We call the suction the "thirsty straw" and the polisher the "tooth tickler" to avoid scary clinical jargon.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Wait-Time Gaming Hubs</h4>
-                    <p className="text-accent/60 text-base">Kids can play gaming consoles in our lounge before their appointment, replacing nerves with play.</p>
+                    <p className="text-accent/60 text-lg md:text-base">Kids can play gaming consoles in our lounge before their appointment, replacing nerves with play.</p>
                   </div>
                 </div>
               </div>

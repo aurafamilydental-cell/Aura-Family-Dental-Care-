@@ -33,7 +33,7 @@ export default function ServicesHub() {
       link: "/services/cosmetic",
       linkText: "Read About Cosmetic Care",
       icon: Sparkles,
-      image: "/smile-after.jpg", 
+      image: "/services/transform-your-smile.png", 
     },
     {
       id: 'family',
@@ -42,7 +42,7 @@ export default function ServicesHub() {
       link: "/services/family",
       linkText: "Read About Family Care",
       icon: Users,
-      image: "/family-care-bento-black.png", 
+      image: "/services/family-care-bento-black.png", 
     },
     {
       id: 'restorative',
@@ -52,7 +52,7 @@ export default function ServicesHub() {
       linkText: "Read About Restorative Care",
       icon: Wrench,
       imagePosition: "object-top",
-      image: "/doctor-patient.JPG", 
+      image: "/patients/doctor-patient.webp", 
     },
     {
       id: 'pediatric',
@@ -61,7 +61,7 @@ export default function ServicesHub() {
       link: "/services/pediatric",
       linkText: "Read About Children's Care",
       icon: Baby,
-      image: "/kids section.JPG", 
+      image: "/facilities/kids-section.webp", 
     },
     {
       id: 'emergency',
@@ -70,7 +70,7 @@ export default function ServicesHub() {
       link: "/services/emergency",
       linkText: "Read About Emergency Help",
       icon: Stethoscope,
-      image: "/emergency-room.jpg", 
+      image: "/facilities/emergency-room.webp", 
     },
     {
       id: 'booking',

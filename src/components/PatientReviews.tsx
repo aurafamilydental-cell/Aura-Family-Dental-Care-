@@ -65,14 +65,7 @@ export default function PatientReviews() {
                     &ldquo;The clinic is beautiful, modern and the staff made me feel completely relaxed. Best cleaning ever!&rdquo;
                   </p>
                   <div className="flex items-center gap-3 mt-auto">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden border border-purple-100 shrink-0">
-                      <Image 
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150" 
-                        alt="Ama Boateng"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+
                     <div>
                       <h4 className="font-bold text-accent text-sm font-heading">Ama Boateng</h4>
                       <p className="text-xs text-accent/60 font-body">Koforidua &bull; Invisalign</p>
@@ -87,14 +80,7 @@ export default function PatientReviews() {
                     &ldquo;Quick, gentle and transparent. They took detailed diagnostic images and showed me exactly what was happening. Pain-free!&rdquo;
                   </p>
                   <div className="flex items-center gap-3 mt-auto">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden border border-purple-100 shrink-0">
-                      <Image 
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150" 
-                        alt="Kofi Mensah"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+
                     <div>
                       <h4 className="font-bold text-accent text-sm font-heading">Kofi Mensah</h4>
                       <p className="text-xs text-accent/60 font-body">Koforidua &bull; Teeth Whitening</p>
@@ -114,14 +100,7 @@ export default function PatientReviews() {
                     &ldquo;The Best Dental Experience I've Ever Had. The Staff Was Incredibly Friendly And The Procedure Was Painless. Strongly recommend!&rdquo;
                   </p>
                   <div className="flex items-center gap-3 mt-auto">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/20 shrink-0">
-                      <Image 
-                        src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150" 
-                        alt="Esi Owusu"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+
                     <div>
                       <h4 className="font-bold text-white text-sm font-heading">Esi Owusu</h4>
                       <p className="text-xs text-purple-200 font-body">Koforidua &bull; Emergency Care</p>

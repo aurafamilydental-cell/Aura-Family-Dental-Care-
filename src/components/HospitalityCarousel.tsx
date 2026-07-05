@@ -16,19 +16,19 @@ const slides: SlideData[] = [
   {
     title: "Matcha & Treat Lounge",
     description: "Skip the stale coffee. Enjoy freshly prepared premium matcha, specialty tea, and organic treats while relaxing in our comfortable lobby lounge.",
-    image: "/tea area.png",
+    image: "/facilities/tea-area.webp",
     buttonText: "Experience The Lounge",
   },
   {
     title: "Gaming Centers",
     description: "Unwind and take your mind off things before your cleaning with classic games and consoles, creating an atmosphere that kids and adults love.",
-    image: "/game section - 1.JPG",
+    image: "/facilities/game-section-1.webp",
     buttonText: "Reserve Game Session",
   },
   {
     title: "No Clinical Atmosphere",
     description: "No sterile, chemical smells. No loud drilling noises echoing down the hall. Just ambient acoustic design and warm lighting to soothe your senses.",
-    image: "/no styrile!.JPG",
+    image: "/facilities/no-styrile.webp",
     buttonText: "Tour Our Clinic",
   },
 ];

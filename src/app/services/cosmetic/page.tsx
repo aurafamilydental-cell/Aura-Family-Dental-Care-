@@ -38,9 +38,9 @@ export default function CosmeticDentistry() {
             
             {/* Left: Copy */}
             <div className="space-y-6">
-              <h2 className="text-3xl font-heading text-accent">Confidence begins with a natural look.</h2>
-              <p className="text-accent/70 text-lg leading-relaxed">
-                We believe that cosmetic dentistry should never look artificial. Whether you want to fix a chipped tooth, brighten discolored enamel, or close a gap, our approach matches your unique facial structure.
+              <h2 className="text-h2 md:text-3xl font-heading text-accent leading-tight text-center md:text-left">Confidence begins with a natural look.</h2>
+              <p className="text-accent/70 text-lg leading-relaxed text-center md:text-left">
+                We ensure cosmetic dentistry never looks artificial. Our approach matches your unique facial structure for a perfectly natural smile.
               </p>
               
               {/* Treatments List */}
@@ -49,21 +49,21 @@ export default function CosmeticDentistry() {
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Gentle Teeth Whitening</h4>
-                    <p className="text-accent/60 text-base">Professional in-office whitening and customized take-home trays with low-sensitivity formulas.</p>
+                    <p className="text-accent/60 text-lg md:text-base">Professional in-office whitening and customized take-home trays with low-sensitivity formulas.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Composite Bonding</h4>
-                    <p className="text-accent/60 text-base">A conservative, single-visit restoration to repair minor chips, spacing, or wear without drilling healthy enamel.</p>
+                    <p className="text-accent/60 text-lg md:text-base">A conservative, single-visit restoration to repair minor chips, spacing, or wear without drilling healthy enamel.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Premium Veneers</h4>
-                    <p className="text-accent/60 text-base">Ultra-thin, handmade porcelain shells designed to align or reshape your smile with minimal tooth preparation.</p>
+                    <p className="text-accent/60 text-lg md:text-base">Ultra-thin, handmade porcelain shells designed to align or reshape your smile with minimal tooth preparation.</p>
                   </div>
                 </div>
               </div>
@@ -72,8 +72,8 @@ export default function CosmeticDentistry() {
             {/* Right: Before/After Slider */}
             <div>
               <BeforeAfterSlider
-                beforeImage="/smile-before.jpg"
-                afterImage="/smile-after.jpg"
+                beforeImage="/patients/after.png"
+                afterImage="/patients/smile-before-damaged.jpg"
                 beforeLabel="Before Restoration"
                 afterLabel="After Cosmetic Bonding"
               />

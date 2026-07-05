@@ -1,7 +1,7 @@
 /* eslint-disable */
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -13,7 +13,7 @@ const teamMembers = [
     name: "Dr. Mary Gyamfi Osei (DDS)", 
     role: "Dentist", 
     trait: "✨ 10+ Years Exp", 
-    image: "/staff 2.JPG",
+    image: "/staff/staff-2.webp",
     description: "When she isn't crafting perfect smiles, you'll probably find her baking up a storm or debating the best coffee spots in town. She believes laughter is just as important as flossing.",
     education: "NYU College of Dentistry"
   },
@@ -21,7 +21,7 @@ const teamMembers = [
     name: "Sheena Asomdwoe Armah", 
     role: "Nursing Officer", 
     trait: "🌟 5-Star Service", 
-    image: "/Sheena.png",
+    image: "/staff/sheena.webp",
     description: "The unofficial DJ of the clinic. Sheena keeps the vibes high, the playlists fresh, and has a magical ability to make even the most nervous patients feel like they're hanging out with a friend.",
     education: "UCLA Health Administration"
   },
@@ -29,7 +29,7 @@ const teamMembers = [
     name: "Judith Asiamah Nuamah", 
     role: "Nursing Officer", 
     trait: "🦷 Cosmetic Expert", 
-    image: "/staff 4.JPG",
+    image: "/staff/staff-4.webp",
     description: "A self-proclaimed plant mom and skincare enthusiast. Judith brings a calm, zen-like energy to the clinic that makes everyone take a deep, relaxing breath the moment they walk in.",
     education: "University of Pennsylvania"
   },
@@ -37,7 +37,7 @@ const teamMembers = [
     name: "Mary Dunyo Amevoh", 
     role: "Nurse", 
     trait: "💖 Pediatric Care", 
-    image: "/staff 5.JPG",
+    image: "/staff/staff-5.webp",
     description: "Always armed with a warm smile and an endless supply of fun facts. Mary is our resident trivia champion and knows exactly how to distract you during a procedure.",
     education: "King's College London"
   },
@@ -45,7 +45,7 @@ const teamMembers = [
     name: "Esther Agyeman Aduah", 
     role: "Administrator", 
     trait: "🎯 Invisalign Pro", 
-    image: "/Esther Agyeman Duah.JPG",
+    image: "/staff/esther-agyeman-duah.webp",
     description: "The organizational wizard who keeps us all in check. Esther runs on spreadsheets, iced lattes, and a secret stash of chocolate that she occasionally shares with the team.",
     education: "Harvard Dental Medicine"
   },
@@ -53,15 +53,15 @@ const teamMembers = [
     name: "Grace Owusu Boamah", 
     role: "Client Relation Specialist", 
     trait: "📅 Scheduling Ace", 
-    image: "/staff 7.JPG",
+    image: "/staff/staff-7.webp",
     description: "Grace never forgets a face, a name, or a birthday. She’s a master conversationalist who can find out your whole life story before you even sit in the dental chair.",
     education: "Boston University"
   },
   { 
     name: "Kelvin Tackie", 
-    role: "Executive Assistant", 
+    role: "Operations Coordinator", 
     trait: "🔍 Precision Care", 
-    image: "/Kelvin.JPG",
+    image: "/staff/kelvin.webp",
     description: "Our go-to guy for literally everything. When he’s not putting out administrative fires with a smile, Kelvin is probably plotting his next big weekend adventure.",
     education: "KNUST School of Medicine and Dentistry"
   },
@@ -69,7 +69,7 @@ const teamMembers = [
     name: "Afsatu Dawud", 
     role: "Client Relation Specialist", 
     trait: "💬 Friendly Guide", 
-    image: "/staff 8.JPG",
+    image: "/staff/staff-8.webp",
     description: "A bubbly ball of energy who genuinely believes a good chat can solve almost anything. Afsatu is the reason our waiting room sometimes sounds more like a cozy cafe.",
     education: "University of Ghana"
   },
@@ -77,7 +77,7 @@ const teamMembers = [
     name: "Comfort Dede", 
     role: "Client Relation Specialist (Intern)", 
     trait: "📋 Detail Oriented", 
-    image: "/staff 9.JPG",
+    image: "/staff/staff-9.webp",
     description: "Eager, bright, and an absolute sponge for knowledge. Comfort brings a fresh, contagious enthusiasm to the team and is on a mission to try every lunch spot near the clinic.",
     education: "GIMPA"
   },
@@ -85,7 +85,7 @@ const teamMembers = [
     name: "Lois Adinkrah", 
     role: "Nurse", 
     trait: "💖 Compassionate Care", 
-    image: "/Lois Adinkra - Nurse.JPG",
+    image: "/staff/lois-adinkra-nurse.webp",
     description: "Sweet, compassionate, and always ready with a comforting word. Lois has a knack for turning a stressful day around and is secretly the best storyteller in the office.",
     education: "Certified Nursing Professional"
   }
@@ -93,6 +93,17 @@ const teamMembers = [
 
 export default function About() {
   const carouselRef = useRef<HTMLDivElement>(null);
+  
+  // State for mobile card tap interaction
+  const [tappedCardIndex, setTappedCardIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState<boolean>(true); // default to true to avoid initial layout shift on mobile
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile(); // Check on mount
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleOpenBooking = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -110,24 +121,66 @@ export default function About() {
     }
   };
 
-  const renderCard = (member: typeof teamMembers[0]) => (
-    <div className="relative group overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100 shadow-sm transition-all duration-300 hover:shadow-xl cursor-pointer w-full h-full">
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 z-10 mix-blend-multiply"></div>
-      <Image src={member.image} alt={member.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700" />
-      
-      {/* Always visible minimal info */}
-      <div className="absolute bottom-6 left-6 right-6 z-20 transition-transform duration-500 group-hover:-translate-y-4 group-hover:opacity-0">
-        <h3 className="font-heading text-2xl text-white drop-shadow-md mb-1">{member.name}</h3>
-        <p className="text-white/90 text-base drop-shadow-md font-medium">{member.role}</p>
-      </div>
 
-      {/* Solid Reveal */}
-      <div className="absolute inset-x-0 bottom-0 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-out p-6 bg-white border-t border-gray-100 z-30 flex flex-col justify-center h-[45%]">
-        <p className="text-primary text-lg font-semibold mb-3">{member.role}</p>
-        <p className="text-accent/80 text-sm leading-relaxed hidden md:block">{member.description}</p>
+
+  const renderCard = (member: typeof teamMembers[0], index: number) => {
+    // Desktop View: Original Hover Behavior
+    if (!isMobile) {
+      return (
+        <div className="relative group overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100 shadow-sm transition-all duration-300 hover:shadow-xl cursor-pointer w-full h-full">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 z-10 mix-blend-multiply"></div>
+          <Image src={member.image} alt={member.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700" />
+          
+          {/* Always visible minimal info */}
+          <div className="absolute bottom-6 left-6 right-6 z-20 transition-transform duration-500 group-hover:-translate-y-4 group-hover:opacity-0">
+            <h3 className="font-heading text-2xl text-white drop-shadow-md mb-1">{member.name}</h3>
+            <p className="text-white/90 text-base drop-shadow-md font-medium">{member.role}</p>
+          </div>
+
+          {/* Solid Reveal */}
+          <div className="absolute inset-x-0 bottom-0 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-out p-6 bg-white border-t border-gray-100 z-30 flex flex-col justify-center h-[45%]">
+            <p className="text-primary text-lg font-semibold mb-3">{member.role}</p>
+            <p className="text-accent/80 text-sm leading-relaxed hidden md:block">{member.description}</p>
+          </div>
+        </div>
+      );
+    }
+
+    // Mobile View: Tap to Flip (3D Card Flip)
+    const isTapped = tappedCardIndex === index;
+
+    return (
+      <div 
+        className="relative group w-full h-full cursor-pointer"
+        style={{ perspective: "1000px" }}
+        onClick={() => setTappedCardIndex(isTapped ? null : index)}
+      >
+        <div 
+          className={`w-full h-full relative transition-transform duration-700 aspect-[4/5]`} 
+          style={{ 
+            transformStyle: "preserve-3d",
+            transform: isTapped ? "rotateY(180deg)" : "rotateY(0deg)"
+          }}
+        >
+          {/* Front */}
+          <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-sm bg-gray-100" style={{ backfaceVisibility: "hidden" }}>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 z-10 mix-blend-multiply"></div>
+            <Image src={member.image} alt={member.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
+            <div className="absolute bottom-6 left-6 right-6 z-20">
+              <h3 className="font-heading text-2xl text-white drop-shadow-md mb-1">{member.name}</h3>
+              <p className="text-white/90 text-base drop-shadow-md font-medium">{member.role}</p>
+            </div>
+          </div>
+          {/* Back */}
+          <div className="absolute inset-0 rounded-2xl bg-white p-6 shadow-xl flex flex-col justify-center border border-gray-100" style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
+            <h3 className="font-heading text-xl text-accent mb-1">{member.name}</h3>
+            <p className="text-primary font-semibold mb-4">{member.role}</p>
+            <p className="text-accent/80 text-sm leading-relaxed mb-4">{member.description}</p>
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -148,7 +201,7 @@ export default function About() {
         {/* Hero Section */}
         <section className="relative w-full mt-[68px] md:mt-0 aspect-[21/9] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
-            <img src="/all smiles original.png" alt="Aura Dental Team" className="w-full h-full object-cover object-center" />
+            <img src="/patients/all-smiles-original.webp" alt="Aura Dental Team" className="w-full h-full object-cover object-center" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-[#0f0521]/70"></div>
           </div>
           <div className="relative z-10 text-center w-full max-w-6xl px-6 pt-12 md:pt-16">
@@ -259,7 +312,7 @@ export default function About() {
 
             <div className="order-1 lg:order-1 flex flex-col items-start lg:pr-12 lg:sticky lg:top-32">
               <div className="w-full aspect-square rounded-xl bg-accent/5 overflow-hidden mb-6 relative shadow-sm">
-                 <Image src="/Mr Abekah.JPG" alt="Dr. Emmanuel Baah Abekah" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+                 <Image src="/staff/mr-abekah.webp" alt="Dr. Emmanuel Baah Abekah" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
               </div>
               <div>
                 <p className="font-heading text-xl text-accent">Dr. Emmanuel Baah Abekah, DDS</p>
@@ -311,11 +364,11 @@ export default function About() {
 
             <div 
               ref={carouselRef}
-              className="flex overflow-x-auto snap-x snap-mandatory gap-6 no-scrollbar pb-8 scroll-smooth px-6 md:px-12 xl:px-[calc((100vw-1280px)/2+48px)] scroll-pl-6 md:scroll-pl-12 xl:scroll-pl-[calc((100vw-1280px)/2+48px)]"
+              className={`flex overflow-x-auto snap-x snap-mandatory gap-6 no-scrollbar pb-8 scroll-smooth px-6 md:px-12 xl:px-[calc((100vw-1280px)/2+48px)] scroll-pl-6 md:scroll-pl-12 xl:scroll-pl-[calc((100vw-1280px)/2+48px)] items-stretch`}
             >
               {teamMembers.map((member, i) => (
-                <div key={i} className="w-[240px] sm:w-[280px] md:w-[340px] flex-shrink-0 snap-start">
-                  {renderCard(member)}
+                <div key={i} className="w-[280px] sm:w-[300px] md:w-[340px] flex-shrink-0 snap-start">
+                  {renderCard(member, i)}
                 </div>
               ))}
             </div>
@@ -342,6 +395,7 @@ export default function About() {
 
       <Footer />
       <BookingDrawer isOpen={false} onClose={() => {}} />
+
     </div>
   );
 }

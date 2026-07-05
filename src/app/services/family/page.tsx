@@ -25,7 +25,7 @@ export default function FamilyDentistry() {
             as="h1"
             text="A dental home for every generation."
             className="mb-6"
-            textClassName="text-h2 text-accent leading-tight whitespace-nowrap"
+            textClassName="text-h2 text-accent leading-tight"
             underlineClassName="text-primary"
           />
           <p className="text-accent/70 text-lg leading-relaxed max-w-2xl mx-auto font-body">
@@ -39,9 +39,9 @@ export default function FamilyDentistry() {
             
             {/* Copy */}
             <div className="space-y-6">
-              <h2 className="text-3xl font-heading text-accent">Coordinating dental visits shouldn't be a chore.</h2>
-              <p className="text-accent/70 text-lg leading-relaxed">
-                We know how busy family schedules are. That's why we offer Family Scheduling options to help you get cleanings and treatments for the entire family done in a single block of time.
+              <h2 className="text-h2 md:text-3xl font-heading text-accent leading-tight text-center md:text-left">Coordinating dental visits shouldn't be a chore.</h2>
+              <p className="text-accent/70 text-lg leading-relaxed text-center md:text-left">
+                We offer Family Scheduling so you can get cleanings and treatments for the whole family done in a single convenient visit.
               </p>
               
               <div className="space-y-4 pt-4">
@@ -49,21 +49,21 @@ export default function FamilyDentistry() {
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Back-to-Back Appointments</h4>
-                    <p className="text-accent/60 text-base">Book slots right after one another so you only make one trip and wait in our lounge.</p>
+                    <p className="text-accent/60 text-lg md:text-base">Book slots right after one another so you only make one trip and wait in our lounge.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Side-by-Side Cleanings</h4>
-                    <p className="text-accent/60 text-base">Get cleanings at the same time in adjacent rooms with different hygienists to save hours.</p>
+                    <p className="text-accent/60 text-lg md:text-base">Get cleanings at the same time in adjacent rooms with different hygienists to save hours.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Kids & Teen Care</h4>
-                    <p className="text-accent/60 text-base">Gentle introductions to oral health, sealants to prevent decay, and alignment screening.</p>
+                    <p className="text-accent/60 text-lg md:text-base">Gentle introductions to oral health, sealants to prevent decay, and alignment screening.</p>
                   </div>
                 </div>
               </div>

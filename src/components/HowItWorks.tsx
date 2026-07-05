@@ -13,7 +13,7 @@ export default function HowItWorks() {
       title: "Schedule an Appointment",
       description:
         "Contact us via phone or online to book a convenient time for your visit. Our team is ready to assist with any scheduling needs.",
-      image: "/lounge_atmosphere.png",
+      image: "/facilities/lounge-atmosphere.webp",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ export default function HowItWorks() {
       title: "Consultation with Our Experts",
       description:
         "Meet our experienced dentists, who will carefully evaluate your oral health, discuss your concerns, and create a personalized treatment plan.",
-      image: "/how-it-works.png",
+      image: "/misc/how-it-works.webp",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@ export default function HowItWorks() {
       title: "Begin Your Treatment",
       description:
         "Start your journey to a healthier, brighter smile with our advanced dental treatments designed for your comfort and satisfaction.",
-      image: "/comfort-care-bento-patient.png",
+      image: "/services/comfort-care-bento-patient.webp",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
