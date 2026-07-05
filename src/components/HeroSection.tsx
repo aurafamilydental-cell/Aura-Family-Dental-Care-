@@ -70,33 +70,47 @@ function BookBtn({ onClick }: { onClick: () => void }) {
 export default function HeroSection({ onBooking }: HeroSectionProps) {
   return (
     <section className="relative w-full min-h-screen flex items-end bg-[#a819dd] overflow-hidden animate-[fadeIn_0.35s_ease]">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-[#a819dd]">
+        {/* Desktop Image */}
         <Image
-          src="/Kuukua-2.JPG"
+          src="/hero/color-hero.png"
           alt="Hero Background"
           fill
+          unoptimized
           sizes="100vw"
-          className="object-cover object-center md:object-right"
+          className="hidden md:block object-cover object-right"
+          priority
+        />
+        {/* Mobile Image */}
+        <Image
+          src="/hero/mobile-hero.png"
+          alt="Hero Background"
+          fill
+          unoptimized
+          sizes="100vw"
+          className="block md:hidden object-cover object-top"
           priority
         />
       </div>
 
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-t from-black/90 via-black/40 to-transparent md:from-black/70 md:via-black/10 md:to-transparent" />
+      {/* Smooth Gradient Fade */}
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-32 md:pt-32 pb-8 md:pb-24 mt-auto md:mt-0 pointer-events-none">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="flex flex-col items-center text-center md:items-start md:text-left md:justify-center space-y-5 md:space-y-6">
-            <h1 className="text-[clamp(40px,10vw,80px)] leading-[1.1] font-medium text-white tracking-tight drop-shadow-md">
-              Bright Smiles,<br className="hidden md:block" />
-              <span className="md:hidden"> </span>Expert Care
+          <div className="flex flex-col items-start text-left md:justify-center space-y-5 md:space-y-6 w-full md:w-auto">
+            <h1 className="text-[clamp(40px,10vw,80px)] leading-[1.1] font-medium tracking-tight text-white drop-shadow-sm">
+              Bright Smiles,<br />
+              Expert Care
             </h1>
-            <p className="text-white/90 md:text-white/75 text-base sm:text-lg leading-relaxed max-w-2xl font-medium md:font-normal">
+            <p className="text-base sm:text-lg leading-relaxed max-w-2xl font-medium md:font-normal text-white/90 md:text-white/75">
               Exceptional dental care tailored to your needs, ensuring a confident<br className="hidden md:block" /> and radiant smile that you can proudly share with the world.
             </p>
-            <div className="flex flex-row items-center justify-center gap-3 md:gap-4 w-full md:w-auto mt-2 md:mt-0 pointer-events-auto">
+            <div className="flex flex-row items-center justify-start gap-3 md:gap-4 w-full md:w-auto mt-2 md:mt-0 pointer-events-auto">
               <BookBtn onClick={onBooking} />
               <Link 
                 href="/services" 
-                className="w-full sm:w-auto text-center bg-transparent md:bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border-2 border-white/40 md:border-white/30 px-6 py-3.5 md:px-10 md:py-4 rounded-full font-medium text-base md:text-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:scale-[1.01] transition-all cursor-pointer whitespace-nowrap"
+                className="w-full sm:w-auto text-center backdrop-blur-md border-2 px-6 py-3.5 md:px-10 md:py-4 rounded-full font-medium text-base md:text-lg hover:scale-[1.01] transition-all cursor-pointer whitespace-nowrap bg-transparent md:bg-white/10 hover:bg-white/20 text-white border-white/40 md:border-white/30"
               >
                 <span className="md:hidden">Treatments</span>
                 <span className="hidden md:inline">Explore Our Services</span>
@@ -108,6 +122,7 @@ export default function HeroSection({ onBooking }: HeroSectionProps) {
         </div>
       </div>
       <StatsCard />
+
       <style>{`
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(6px); }

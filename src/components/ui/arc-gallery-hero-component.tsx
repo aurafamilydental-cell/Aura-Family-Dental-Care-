@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
-import { useInView } from 'framer-motion';
+import { useInView, motion } from 'framer-motion';
 
 type ArcGalleryHeroProps = {
   images: string[];
@@ -63,6 +63,49 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
   return (
     <section ref={containerRef} className={`relative overflow-hidden bg-background text-accent min-h-[50vh] md:min-h-screen flex flex-col pt-10 md:pt-24 ${className}`}>
       
+      {/* MOBILE FLOATING GALLERY (< 768px) */}
+      <div className="md:hidden relative w-full max-w-[340px] mx-auto h-[420px] mb-4 mt-4">
+        {images.slice(0, 4).map((src, i) => {
+          const positions = [
+            { top: '10px', left: '10px', width: '130px', height: '170px', rotate: -6, zIndex: 4, originX: -150 },
+            { top: '25px', right: '5px', width: '150px', height: '190px', rotate: 8, zIndex: 3, originX: 150 },
+            { bottom: '50px', left: '15px', width: '140px', height: '185px', rotate: -4, zIndex: 2, originX: -150 },
+            { bottom: '5px', right: '25px', width: '120px', height: '160px', rotate: 12, zIndex: 1, originX: 150 },
+          ];
+          const pos = positions[i % positions.length];
+
+          return (
+            <motion.div
+              key={`mobile-${i}`}
+              className="absolute"
+              style={{
+                top: pos.top,
+                bottom: pos.bottom,
+                left: pos.left,
+                right: pos.right,
+                width: pos.width,
+                height: pos.height,
+                zIndex: pos.zIndex,
+              }}
+              initial={{ opacity: 0, x: pos.originX, rotate: 0 }}
+              animate={isInView ? { opacity: 1, x: 0, rotate: pos.rotate } : { opacity: 0, x: pos.originX, rotate: 0 }}
+              transition={{ duration: 2.0, delay: i * 0.3, type: "spring", bounce: 0.2 }}
+            >
+              <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl ring-2 ring-white/60 bg-white">
+                <Image
+                  src={src}
+                  alt={`Mobile Gallery Image ${i + 1}`}
+                  fill
+                  className="object-cover"
+                  sizes="160px"
+                  quality={95}
+                />
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
       {/* DESKTOP ARC GALLERY (>= 768px) */}
       <div
         className="hidden md:block relative mx-auto transition-all duration-500"
@@ -141,8 +184,13 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
           from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes fade-in-float-up {
+          from { opacity: 0; transform: translateY(50px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
         .animate-fade-in-up { animation-name: fade-in-up; animation-duration: 0.8s; animation-timing-function: ease-out; }
         .animate-fade-in { animation-name: fade-in; animation-duration: 0.8s; animation-timing-function: ease-out; }
+        .animate-float-up { animation-name: fade-in-float-up; animation-duration: 0.8s; animation-timing-function: ease-out; }
       `}</style>
     </section>
   );

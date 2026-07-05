@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { bookAppointment, BookingDetails } from "@/lib/googleCalendar";
+import { appendBookingToSheet } from "@/lib/googleSheets";
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,6 +22,9 @@ export async function POST(request: NextRequest) {
     const success = await bookAppointment(body);
 
     if (success) {
+      // Log to Google Sheets asynchronously (doesn't block response)
+      appendBookingToSheet(body).catch((err) => console.error("Sheets log failed:", err));
+
       return NextResponse.json({ success: true, message: "Appointment booked successfully!" });
     } else {
       return NextResponse.json({ error: "Failed to schedule appointment in the system." }, { status: 500 });

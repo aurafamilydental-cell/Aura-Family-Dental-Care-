@@ -68,7 +68,7 @@ export default function NewPatients() {
               </div>
               <div className="relative w-full md:w-[45%] h-56 md:min-h-[600px] overflow-hidden">
                 <Image
-                  src="/tea area-horizontal.png"
+                  src="/facilities/tea-area-horizontal.webp"
                   alt="A Welcoming Arrival"
                   fill
                   priority
@@ -86,7 +86,7 @@ export default function NewPatients() {
             >
               <div className="relative w-full h-48 overflow-hidden">
                 <Image
-                  src="/doctor-patient.JPG"
+                  src="/patients/doctor-patient.webp"
                   alt="The Comfort Consultation"
                   fill
                   className="object-cover transition-transform duration-700 ease-out"
@@ -123,7 +123,7 @@ export default function NewPatients() {
               </div>
               <div className="relative w-full h-48 mt-auto overflow-hidden">
                 <Image
-                  src="/chck up 1.JPG"
+                  src="/services/chck-up-1.webp"
                   alt="Gentle Diagnostics"
                   fill
                   className="object-cover transition-transform duration-700 ease-out object-top"
@@ -138,7 +138,7 @@ export default function NewPatients() {
             >
               <div className="relative w-full md:w-[45%] h-56 md:min-h-[600px] overflow-hidden">
                 <Image
-                  src="/collab-2.JPG"
+                  src="/patients/collab-2.webp"
                   alt="Care Plan"
                   fill
                   priority

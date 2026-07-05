@@ -24,7 +24,7 @@ export default function RestorativeDentistry() {
             as="h1"
             text="Restoring oral health, comfortably."
             className="mb-6"
-            textClassName="text-h2 text-accent leading-tight whitespace-nowrap"
+            textClassName="text-h2 text-accent leading-tight"
             underlineClassName="text-primary"
           />
           <p className="text-accent/70 text-lg leading-relaxed max-w-2xl mx-auto font-body">
@@ -38,9 +38,9 @@ export default function RestorativeDentistry() {
             
             {/* Copy */}
             <div className="space-y-6">
-              <h2 className="text-3xl font-heading text-accent">No lectures, just solutions.</h2>
-              <p className="text-accent/70 text-lg leading-relaxed">
-                Many patients avoid restorative work because they fear being scolded or lectured about past dental neglect. At Aura, we look forward, not backward. We focus on getting you out of discomfort and restoring your bite.
+              <h2 className="text-h2 md:text-3xl font-heading text-accent leading-tight text-center md:text-left">No lectures, just solutions.</h2>
+              <p className="text-accent/70 text-lg leading-relaxed text-center md:text-left">
+                We skip the judgment about past dental care. Our focus is entirely on getting you out of discomfort and restoring your smile.
               </p>
               
               <div className="space-y-4 pt-4">
@@ -48,21 +48,21 @@ export default function RestorativeDentistry() {
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Composite (Tooth-Colored) Fillings</h4>
-                    <p className="text-accent/60 text-base">We use durable, metal-free composite resins that bond directly to your enamel, preserving tooth structure.</p>
+                    <p className="text-accent/60 text-lg md:text-base">We use durable, metal-free composite resins that bond directly to your enamel, preserving tooth structure.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Porcelain Crowns & Inlays</h4>
-                    <p className="text-accent/60 text-base">Custom-crafted restorations to reinforce cracked or heavily decayed teeth, designed to blend with your natural smile.</p>
+                    <p className="text-accent/60 text-lg md:text-base">Custom-crafted restorations to reinforce cracked or heavily decayed teeth, designed to blend with your natural smile.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Implant Restoration</h4>
-                    <p className="text-accent/60 text-base">A permanent solution for missing teeth. Implants function and feel exactly like natural teeth, protecting your jawbone.</p>
+                    <p className="text-accent/60 text-lg md:text-base">A permanent solution for missing teeth. Implants function and feel exactly like natural teeth, protecting your jawbone.</p>
                   </div>
                 </div>
               </div>
@@ -71,7 +71,7 @@ export default function RestorativeDentistry() {
             {/* Graphic Image */}
             <div className="relative aspect-[4/3] rounded-brand overflow-hidden border border-primary/10">
               <Image
-                src="/doctor-patient.JPG"
+                src="/patients/doctor-patient.webp"
                 alt="Conservative Dentistry - Painless Wand Numbing"
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center' }}

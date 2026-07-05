@@ -30,18 +30,18 @@ import HowItWorks from "@/components/HowItWorks";
 import { ServiceCardsPlayground } from "@/components/ServiceCardsPlayground";
 
 const arcImages = [
-  "/doctor-patient.JPG",
-  "/front desk.JPG",
-  "/game section.JPG",
-  "/no styrile atmosphere.JPG",
-  "/banner.JPG",
-  "/gassed man smillinag.JPG",
-  "/no styrile!.JPG",
-  "/game section - 1.JPG",
+  "/patients/doctor-patient.webp",
+  "/facilities/front-desk.webp",
+  "/facilities/game-section.webp",
+  "/misc/teeth-witening.webp",
+  "/hero/banner.webp",
+  "/patients/gassed-man-smillinag.webp",
+  "/facilities/no-styrile.webp",
+  "/facilities/game-section-1.webp",
   "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop",
-  "/emergency-room.jpg",
-  "/teeth-whitening-v3.png",
-  "/machine-1.JPG",
+  "/facilities/emergency-room.webp",
+  "/services/teeth-whitening-v3.webp",
+  "/facilities/machine-1.webp",
 ];
 
 export default function Home() {
@@ -179,11 +179,18 @@ export default function Home() {
 
               <div className="relative w-full md:w-[42%] h-48 md:h-auto overflow-hidden">
                 <Image
-                  src="/comfort-care-bento-patient-highres.png"
+                  src="/services/been-in-years-desktop-v2.png"
                   alt="Smiling patient getting her teeth examined by a friendly dentist wearing purple gloves"
                   fill
-                  className="object-cover transition-transform duration-500 ease-out"
-                  sizes="(max-w-768px) 100vw, 33vw"
+                  className="hidden md:block object-cover transition-transform duration-500 ease-out"
+                  sizes="33vw"
+                />
+                <Image
+                  src="/services/been-in-years-mobile-v2.png"
+                  alt="Smiling patient getting her teeth examined by a friendly dentist wearing purple gloves"
+                  fill
+                  className="block md:hidden object-cover transition-transform duration-500 ease-out"
+                  sizes="100vw"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-black/0 via-transparent to-white/10" />
@@ -195,7 +202,7 @@ export default function Home() {
             <ScrollRevealItem className="flex-none w-[85vw] sm:w-[300px] md:w-auto snap-center shrink-0 md:shrink md:col-span-1 relative overflow-hidden bg-white rounded-brand border border-border-subtle hover:border-primary/20 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col min-h-[200px] md:min-h-[300px]">
               <div className="relative w-full h-44 overflow-hidden">
                 <Image
-                  src="/smile-after.jpg"
+                  src="/services/transform-your-smile.png"
                   alt="Close-up of a beautifully whitened, bright natural smile"
                   fill
                   className="object-cover transition-transform duration-500 ease-out"
@@ -231,7 +238,7 @@ export default function Home() {
             <ScrollRevealItem className="flex-none w-[85vw] sm:w-[300px] md:w-auto snap-center shrink-0 md:shrink md:col-span-3 relative overflow-hidden bg-white rounded-brand border border-border-subtle hover:border-primary/20 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col md:flex-row min-h-[220px] md:min-h-[260px]">
               <div className="relative w-full md:w-[32%] h-48 md:h-auto overflow-hidden">
                 <Image
-                  src="/family-care-bento-black.png"
+                  src="/facilities/banner.JPG"
                   alt="Happy Black family laughing together in a bright, modern, family-friendly dental clinic"
                   fill
                   className="object-cover transition-transform duration-500 ease-out"
@@ -349,7 +356,7 @@ export default function Home() {
                   title: "Dental Implants",
                   description:
                     "Restore your smile and confidence with our durable, natural-looking dental implants",
-                  image: "/dental-implants-v3.png",
+                  image: "/services/dental-implants-v3.webp",
                   alt: "A close-up of a smiling Black person showing healthy white teeth, with a circular magnifier overlay detailing a titanium dental implant screw embedded in the gum line and jawbone",
                   link: "/services/restorative",
                 },
@@ -357,7 +364,7 @@ export default function Home() {
                   title: "Teeth Whitening",
                   description:
                     "Achieve a bright, radiant smile with our professional teeth whitening treatments",
-                  image: "/teeth-whitening-v3.png",
+                  image: "/services/teeth-whitening-v3.webp",
                   alt: "A close-up of a smiling Black woman wearing protective orange eyewear while undergoing a professional teeth whitening treatment with a blue light device",
                   link: "/services/cosmetic",
                 },
@@ -365,7 +372,7 @@ export default function Home() {
                   title: "Orthodontics",
                   description:
                     "Straighten your teeth and perfect your smile with our advanced orthodontic options",
-                  image: "/orthodontics-v3.png",
+                  image: "/services/orthodontics-v3.webp",
                   alt: "A close-up macro shot of a Black person smiling, showing white teeth with metal and clear ceramic orthodontic braces",
                   link: "/services/family",
                 },
@@ -373,7 +380,7 @@ export default function Home() {
                   title: "Routine Checkups",
                   description:
                     "Maintain optimal oral health with regular checkups and cleanings",
-                  image: "/routine-checkups-v3.png",
+                  image: "/services/routine-checkups-v3.webp",
                   alt: "A smiling Black man reclining in a dental chair while a dentist in blue gloves holds dental mirrors for a checkup",
                   link: "/services/family",
                 },
@@ -426,40 +433,28 @@ export default function Home() {
                       </>
                     }
                     className="items-start mb-6"
-                    textClassName="text-[1.35rem] min-[400px]:text-2xl md:text-h2 text-accent leading-tight text-left whitespace-nowrap tracking-tight"
+                    textClassName="text-h2 text-accent leading-tight text-left tracking-tight"
                     underlineClassName="text-primary"
                   />
                 </ScrollRevealItem>
 
                 <ScrollRevealItem>
                   <p className="text-accent/70 text-base md:text-lg mb-4 md:mb-8 leading-relaxed">
-                    "Imagine walking into every room knowing your smile is
+                    Imagine walking into every room knowing your smile is
                     exactly what you want it to be. We focus on natural,
-                    life-changing outcomes that respect your anatomy."
+                    life-changing outcomes that respect your anatomy.
                   </p>
                 </ScrollRevealItem>
 
-                {/* Patient Quote */}
 
-                <ScrollRevealItem className="border-l-2 border-primary pl-4 md:pl-6 mt-4 mb-8 md:my-8">
-                  <p className="italic text-accent/80 text-sm md:text-base mb-2">
-                    "I hadn't seen a dentist in 8 years out of embarrassment.
-                    The team at Aura welcomed me like family, set up a
-                    comfortable care plan, and restored my confidence."
-                  </p>
-
-                  <cite className="text-accent/60 text-xs md:text-sm font-semibold not-italic">
-                    — Sarah K., Patient
-                  </cite>
-                </ScrollRevealItem>
               </div>
 
               {/* Right Column: Before/After Interactive Component */}
 
-              <ScrollRevealItem className="w-[90%] sm:w-[80%] mx-auto md:w-full">
+              <ScrollRevealItem className="w-[95%] sm:w-[85%] mx-auto md:w-full">
                 <BeforeAfterSlider
-                  beforeImage="/smile-before.jpg"
-                  afterImage="/smile-after.jpg"
+                  beforeImage="/patients/after.png"
+                  afterImage="/patients/smile-before-damaged.jpg"
                   beforeLabel="Before Aura"
                   afterLabel="After Aura"
                 />

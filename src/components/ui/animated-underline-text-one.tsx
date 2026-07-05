@@ -63,7 +63,7 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
             className={textClassName || "text-4xl font-bold text-center"}
             initial={{ y: -20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-10px" }}
             transition={{ duration: 0.6 }}
             whileHover={{ scale: 1.02 }}
           >
@@ -76,7 +76,7 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
             viewBox="0 0 300 20"
             preserveAspectRatio={preserveAspectRatio}
             className={cn(
-              "absolute -bottom-4 w-2/3 max-w-[180px] sm:max-w-[220px] md:max-w-[280px]",
+              "absolute -bottom-2 md:-bottom-4 w-2/3 max-w-[180px] sm:max-w-[220px] md:max-w-[280px] z-10",
               align === "center" && "left-1/2 -translate-x-1/2",
               align === "right" && "right-0",
               align === "left" && "left-0",
@@ -91,7 +91,7 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
               variants={pathVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-10px" }}
               whileHover={{
                 d: underlineHoverPath,
                 transition: { duration: 0.8 },

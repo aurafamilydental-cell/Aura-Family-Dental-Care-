@@ -2,6 +2,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import CustomDropdown from "./ui/CustomDropdown";
+import CustomCalendar from "./ui/CustomCalendar";
+import { Stethoscope, Sparkles, Activity, PlusCircle, Baby } from "lucide-react";
+import { getTreatmentDuration } from "@/lib/treatmentDurations";
 
 interface BookingDrawerProps {
   isOpen: boolean;
@@ -34,15 +38,17 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [reason, setReason] = useState("Routine Checkup & Cleaning");
+  const [customReason, setCustomReason] = useState("");
 
   // Child-specific fields
   const [childName, setChildName] = useState("");
   const [childAge, setChildAge] = useState("");
+  
+  // Shared fields
   const [isFirstVisit, setIsFirstVisit] = useState(false);
 
   // Family-specific fields
   const [familyMembers, setFamilyMembers] = useState("");
-  const [appointmentPref, setAppointmentPref] = useState("back-to-back");
 
   // Date/Time selection
   const [selectedDate, setSelectedDate] = useState("");
@@ -65,8 +71,10 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
       setSelectedSlot("");
       setErrorMessage("");
       
+      const duration = getTreatmentDuration(reason);
+
       try {
-        const res = await fetch(`/api/availability?date=${selectedDate}`);
+        const res = await fetch(`/api/availability?date=${selectedDate}&duration=${duration}`);
         if (!res.ok) throw new Error("Failed to fetch slots");
         const data = await res.json();
         setAvailableSlots(data.slots || []);
@@ -78,7 +86,7 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
     };
 
     fetchSlots();
-  }, [selectedDate]);
+  }, [selectedDate, reason]);
 
   // Handle Form Submission
   const handleSubmit = async (e: React.FormEvent) => {
@@ -91,13 +99,13 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
       name,
       email,
       phone,
-      reason,
+      reason: reason === "Other" ? customReason : reason,
       timeSlot: selectedSlot,
+      durationMinutes: getTreatmentDuration(reason),
       childName: patientType === "child" ? childName : undefined,
       childAge: patientType === "child" ? childAge : undefined,
-      isFirstVisit: patientType === "child" ? isFirstVisit : undefined,
+      isFirstVisit,
       familyMembers: patientType === "family" ? familyMembers : undefined,
-      appointmentPref: patientType === "family" ? appointmentPref : undefined,
     };
 
     try {
@@ -128,11 +136,11 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
       setEmail("");
       setPhone("");
       setReason("Routine Checkup & Cleaning");
+      setCustomReason("");
       setChildName("");
       setChildAge("");
       setIsFirstVisit(false);
       setFamilyMembers("");
-      setAppointmentPref("back-to-back");
       setSelectedDate("");
       setSelectedSlot("");
       setBookingSuccess(false);
@@ -150,31 +158,59 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
     return date.toLocaleDateString([], { weekday: "long", month: "long", day: "numeric" });
   };
 
+  const reasonOptions = [
+    { value: "Routine Checkup & Cleaning", label: "Routine Checkup & Cleaning", icon: Stethoscope },
+    { value: "Cosmetic Consultation", label: "Cosmetic Consultation", icon: Sparkles },
+    { value: "Tooth Pain / Restorative", label: "Tooth Pain / Filling", icon: Activity },
+    { value: "Emergency Visit", label: "Emergency Care", icon: PlusCircle },
+    { value: "Child Pediatric Visit", label: "Child Pediatric Visit", icon: Baby },
+    { value: "Other", label: "Other (Please specify)", icon: PlusCircle },
+  ];
+
+  const currentTheme = {
+    drawer: "bg-white border-l border-gray-200 text-accent",
+    header: "border-b border-gray-100",
+    card: "p-5 border border-gray-100 bg-gray-50 rounded-2xl shadow-sm hover:bg-gray-100 hover:scale-[1.01] transition-all group",
+    cardText: "text-accent group-hover:text-primary transition-colors",
+    input: "w-full px-4 py-3 border border-gray-200 bg-white rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-accent [&:-webkit-autofill]:shadow-[inset_0_0_0px_1000px_white] [&:-webkit-autofill]:-webkit-text-fill-color-accent",
+    primaryBtn: "bg-gradient-to-r from-primary to-purple-500 text-white rounded-full shadow-lg shadow-primary/30 hover:shadow-xl hover:scale-[1.02] transition-all",
+    secondaryBtn: "border border-gray-200 bg-white text-accent rounded-full hover:bg-gray-50 transition-all",
+    slotBtn: "py-3 rounded-xl text-xs font-semibold border border-gray-200 bg-gray-50 text-accent hover:bg-gray-100 transition-all",
+    slotBtnActive: "py-3 rounded-xl text-xs font-semibold bg-gradient-to-r from-primary to-purple-500 text-white shadow-md shadow-primary/30",
+    stepText: "text-sm font-medium tracking-wider text-primary/80 uppercase block",
+    label: "block text-sm font-semibold text-accent/80 mb-2",
+    h3: "text-2xl font-heading text-accent",
+    subLabel: "text-accent/60 text-xs mt-1",
+    closeBtn: "hover:bg-accent/5 text-accent/60 hover:text-accent",
+  };
+
   return (
     <>
       {/* Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 transition-opacity duration-300"
+          className="fixed inset-0 z-50 bg-black/40 transition-opacity duration-300"
           onClick={handleClose}
         />
       )}
 
       {/* Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-full sm:w-[480px] bg-background z-50 border-l border-border-subtle flex flex-col transition-all duration-300 ease-in-out ${
-          isOpen ? "translate-x-0 shadow-2xl" : "translate-x-full shadow-none"
+        className={`fixed top-0 right-0 h-full w-full sm:w-[500px] z-50 flex flex-col transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${currentTheme.drawer} ${
+          isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Header */}
-        <div className="p-6 border-b border-border-subtle flex items-center justify-between">
+        <div className={`p-6 flex items-center justify-between ${currentTheme.header}`}>
           <div>
-            <h3 className="text-2xl font-heading text-accent">Schedule Your Visit</h3>
-            <p className="text-accent/60 text-xs">Aura Family Dental Care</p>
+            <h3 className={currentTheme.h3}>Schedule Your Visit</h3>
+            <p className={currentTheme.subLabel}>
+              Aura Family Dental Care
+            </p>
           </div>
           <button
             onClick={handleClose}
-            className="p-2 rounded-full hover:bg-accent/5 transition-colors text-accent/60 hover:text-accent"
+            className={`p-2 rounded-full transition-colors ${currentTheme.closeBtn}`}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -183,49 +219,49 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
         </div>
 
         {/* Form Body */}
-        <div className="flex-grow overflow-y-auto p-6">
+        <div className="flex-grow overflow-y-auto p-6 scrollbar-hide">
           {errorMessage && (
-            <div className="bg-red-50 text-red-600 border border-red-200 p-4 rounded-brand mb-6 text-sm flex items-start gap-2">
-              <span className="text-lg"></span>
+            <div className="bg-red-50 text-red-600 border border-red-200 p-4 rounded-xl mb-6 text-sm flex items-start gap-2">
               <p>{errorMessage}</p>
             </div>
           )}
 
           {bookingSuccess ? (
-            <div className="h-full flex flex-col items-center justify-center text-center p-6">
-              <span className="text-6xl mb-6"></span>
-              <h4 className="text-2xl font-heading text-accent mb-3">Booking Confirmed!</h4>
-              <p className="text-accent/70 leading-relaxed max-w-sm mb-8">
+            <div className="h-full flex flex-col items-center justify-center text-center p-6 animate-in zoom-in-95 duration-500">
+              <div className="w-24 h-24 rounded-full flex items-center justify-center mb-6 bg-gradient-to-r from-primary to-purple-500 text-white shadow-xl shadow-primary/30">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <h4 className={currentTheme.h3 + " mb-3"}>Booking Confirmed!</h4>
+              <p className="text-gray-500 leading-relaxed max-w-sm mb-8">
                 Thank you, {name || childName || "Family"}. A calendar invitation has been sent to your email. We look forward to seeing you!
               </p>
               <button
                 onClick={handleClose}
-                className="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-accent transition-all w-full"
+                className={`w-full py-4 ${currentTheme.primaryBtn}`}
               >
                 Close Window
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-8">
               {/* STEP 1: Patient Type */}
               {step === 1 && (
-                <div className="space-y-6">
-                  <span className="text-sm font-semibold tracking-wider text-primary uppercase block">Step 1 of 3: Who is visiting?</span>
+                <div className="space-y-6 animate-in slide-in-from-right-8 fade-in duration-500">
+                  <span className={currentTheme.stepText}>Step 1 of 3: Who is visiting?</span>
                   
-                  <div className="grid grid-cols-1 gap-4">
+                  <div className="grid grid-cols-1 gap-5">
                     <button
                       type="button"
                       onClick={() => {
                         setPatientType("adult");
                         setStep(2);
                       }}
-                      className="p-5 border-2 border-border-subtle rounded-brand text-left hover:border-primary hover:bg-primary/5 transition-all flex justify-between items-center group"
+                      className={currentTheme.card}
                     >
-                      <div>
-                        <h4 className="font-heading text-lg text-accent group-hover:text-primary transition-colors">Just Me</h4>
-                        <p className="text-accent/60 text-sm mt-1">Book an appointment for myself</p>
+                      <div className="text-left">
+                        <h4 className={`font-heading text-lg ${currentTheme.cardText}`}>Just Me</h4>
+                        <p className="text-gray-500 text-sm mt-1 font-normal">Book an appointment for myself</p>
                       </div>
-                      <span className="text-xl"></span>
                     </button>
 
                     <button
@@ -234,13 +270,12 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
                         setPatientType("child");
                         setStep(2);
                       }}
-                      className="p-5 border-2 border-border-subtle rounded-brand text-left hover:border-primary hover:bg-primary/5 transition-all flex justify-between items-center group"
+                      className={currentTheme.card}
                     >
-                      <div>
-                        <h4 className="font-heading text-lg text-accent group-hover:text-primary transition-colors">My Child</h4>
-                        <p className="text-accent/60 text-sm mt-1">Book a gentle checkup for a child</p>
+                      <div className="text-left">
+                        <h4 className={`font-heading text-lg ${currentTheme.cardText}`}>My Child</h4>
+                        <p className="text-gray-500 text-sm mt-1 font-normal">Book a gentle checkup for a child</p>
                       </div>
-                      <span className="text-xl"></span>
                     </button>
 
                     <button
@@ -249,13 +284,12 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
                         setPatientType("family");
                         setStep(2);
                       }}
-                      className="p-5 border-2 border-border-subtle rounded-brand text-left hover:border-primary hover:bg-primary/5 transition-all flex justify-between items-center group"
+                      className={currentTheme.card}
                     >
-                      <div>
-                        <h4 className="font-heading text-lg text-accent group-hover:text-primary transition-colors">Family / Both</h4>
-                        <p className="text-accent/60 text-sm mt-1">Book back-to-back slots for family</p>
+                      <div className="text-left">
+                        <h4 className={`font-heading text-lg ${currentTheme.cardText}`}>Family / Both</h4>
+                        <p className="text-gray-500 text-sm mt-1 font-normal">Book back-to-back slots for family</p>
                       </div>
-                      <span className="text-xl"></span>
                     </button>
                   </div>
                 </div>
@@ -263,20 +297,20 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
 
               {/* STEP 2: Patient Info */}
               {step === 2 && (
-                <div className="space-y-6">
-                  <span className="text-sm font-semibold tracking-wider text-primary uppercase block">Step 2 of 3: Provide details</span>
+                <div className="space-y-6 animate-in slide-in-from-right-8 fade-in duration-500">
+                  <span className={currentTheme.stepText}>Step 2 of 3: Provide details</span>
 
                   {/* ADULT FIELDS */}
                   {patientType === "adult" && (
-                    <div className="space-y-4">
+                    <div className="space-y-5">
                       <div>
-                        <label className="block text-sm font-semibold text-accent/80 mb-2">Your Full Name</label>
+                        <label className={currentTheme.label}>Your Full Name</label>
                         <input
                           type="text"
                           required
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          className="w-full px-4 py-3 border border-border-subtle rounded-brand focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-accent bg-background text-[16px] sm:text-sm"
+                          className={currentTheme.input}
                           placeholder="John Doe"
                         />
                       </div>
@@ -285,154 +319,121 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
 
                   {/* CHILD FIELDS */}
                   {patientType === "child" && (
-                    <div className="space-y-4">
+                    <div className="space-y-5">
                       <div>
-                        <label className="block text-sm font-semibold text-accent/80 mb-2">Child's Name</label>
+                        <label className={currentTheme.label}>Child's Name</label>
                         <input
                           type="text"
                           required
                           value={childName}
                           onChange={(e) => setChildName(e.target.value)}
-                          className="w-full px-4 py-3 border border-border-subtle rounded-brand focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-accent bg-background text-[16px] sm:text-sm"
+                          className={currentTheme.input}
                           placeholder="Sam Doe"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-accent/80 mb-2">Child's Age</label>
+                        <label className={currentTheme.label}>Child's Age</label>
                         <input
                           type="text"
                           required
                           value={childAge}
                           onChange={(e) => setChildAge(e.target.value)}
-                          className="w-full px-4 py-3 border border-border-subtle rounded-brand focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-accent bg-background text-[16px] sm:text-sm"
+                          className={currentTheme.input}
                           placeholder="e.g. 6 years old"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-accent/80 mb-2">Parent/Guardian Full Name</label>
+                        <label className={currentTheme.label}>Parent/Guardian Full Name</label>
                         <input
                           type="text"
                           required
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          className="w-full px-4 py-3 border border-border-subtle rounded-brand focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-accent bg-background text-[16px] sm:text-sm"
+                          className={currentTheme.input}
                           placeholder="Jane Doe"
                         />
-                      </div>
-                      <div className="flex items-center gap-3 pt-2">
-                        <input
-                          type="checkbox"
-                          id="first-visit"
-                          checked={isFirstVisit}
-                          onChange={(e) => setIsFirstVisit(e.target.checked)}
-                          className="w-4 h-4 text-primary border-border-subtle rounded focus:ring-primary focus:outline-none accent-primary"
-                        />
-                        <label htmlFor="first-visit" className="text-sm text-accent/80 font-medium select-none cursor-pointer">
-                          Is this their first time visiting the dentist?
-                        </label>
                       </div>
                     </div>
                   )}
 
                   {/* FAMILY FIELDS */}
                   {patientType === "family" && (
-                    <div className="space-y-4">
+                    <div className="space-y-5">
                       <div>
-                        <label className="block text-sm font-semibold text-accent/80 mb-2">Parent/Guardian Name</label>
+                        <label className={currentTheme.label}>Parent/Guardian Name</label>
                         <input
                           type="text"
                           required
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          className="w-full px-4 py-3 border border-border-subtle rounded-brand focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-accent bg-background text-[16px] sm:text-sm"
+                          className={currentTheme.input}
                           placeholder="John Doe"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-accent/80 mb-2">Family Members Booking (Names & Ages)</label>
+                        <label className={currentTheme.label}>Family Members Booking</label>
                         <textarea
                           required
                           value={familyMembers}
                           onChange={(e) => setFamilyMembers(e.target.value)}
-                          className="w-full px-4 py-3 border border-border-subtle rounded-brand focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-accent bg-background h-24 text-[16px] sm:text-sm"
+                          className={currentTheme.input + " h-24 resize-none"}
                           placeholder="e.g. Sam (Age 6), Jessica (Age 8), John (Adult)"
                         />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold text-accent/80 mb-2">Scheduling Preference</label>
-                        <div className="grid grid-cols-2 gap-4">
-                          <button
-                            type="button"
-                            onClick={() => setAppointmentPref("back-to-back")}
-                            className={`py-3 px-4 border rounded-brand font-medium transition-colors ${
-                              appointmentPref === "back-to-back"
-                                ? "bg-accent text-white border-accent"
-                                : "bg-transparent text-accent border-border-subtle hover:border-accent"
-                            }`}
-                          >
-                            Back-to-Back
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => setAppointmentPref("side-by-side")}
-                            className={`py-3 px-4 border rounded-brand font-medium transition-colors ${
-                              appointmentPref === "side-by-side"
-                                ? "bg-accent text-white border-accent"
-                                : "bg-transparent text-accent border-border-subtle hover:border-accent"
-                            }`}
-                          >
-                            Side-by-Side
-                          </button>
-                        </div>
                       </div>
                     </div>
                   )}
 
                   {/* SHARED CONTACT FIELDS */}
-                  <div className="space-y-4 pt-4 border-t border-border-subtle">
+                  <div className={`space-y-5 pt-6 ${currentTheme.header}`}>
                     <div>
-                      <label className="block text-sm font-semibold text-accent/80 mb-2">Email Address</label>
+                      <label className={currentTheme.label}>Email Address</label>
                       <input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-3 border border-border-subtle rounded-brand focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-accent bg-background"
+                        className={currentTheme.input}
                         placeholder="patient@example.com"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-accent/80 mb-2">Phone Number</label>
+                      <label className={currentTheme.label}>Phone Number</label>
                       <input
                         type="tel"
                         required
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        className="w-full px-4 py-3 border border-border-subtle rounded-brand focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-accent bg-background"
+                        className={currentTheme.input}
                         placeholder="(+233) 0544079966"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-accent/80 mb-2">Reason for Visit</label>
-                      <select
+                      <label className={currentTheme.label}>Reason for Visit</label>
+                      <CustomDropdown
                         value={reason}
-                        onChange={(e) => setReason(e.target.value)}
-                        className="w-full px-4 py-3 border border-border-subtle rounded-brand focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-accent bg-background"
-                      >
-                        <option value="Routine Checkup & Cleaning">Routine Checkup & Cleaning</option>
-                        <option value="Cosmetic Consultation">Cosmetic Consultation</option>
-                        <option value="Tooth Pain / Restorative">Tooth Pain / Filling</option>
-                        <option value="Emergency Visit">Emergency Care</option>
-                        <option value="Child Pediatric Visit">Child Pediatric Visit</option>
-                      </select>
+                        onChange={setReason}
+                        options={reasonOptions}
+                      />
                     </div>
+                    {reason === "Other" && (
+                      <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                        <label className={currentTheme.label}>Please specify your reason</label>
+                        <input
+                          type="text"
+                          required
+                          value={customReason}
+                          onChange={(e) => setCustomReason(e.target.value)}
+                          className={currentTheme.input}
+                          placeholder="Briefly describe your concern"
+                        />
+                      </div>
+                    )}
                   </div>
-
-                  <div className="flex gap-4 pt-4">
+                  <div className="flex gap-4 pt-8">
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="flex-1 py-3 border border-border-subtle rounded-full font-semibold hover:border-accent transition-colors"
+                      className={`flex-1 py-4 ${currentTheme.secondaryBtn}`}
                     >
                       Back
                     </button>
@@ -440,7 +441,7 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
                       type="button"
                       disabled={!name || !email || !phone}
                       onClick={() => setStep(3)}
-                      className="flex-1 py-3 bg-primary text-white rounded-full font-semibold hover:bg-accent transition-all disabled:opacity-50 disabled:pointer-events-none"
+                      className={`flex-1 py-4 disabled:opacity-50 disabled:pointer-events-none ${currentTheme.primaryBtn}`}
                     >
                       Choose Time
                     </button>
@@ -450,50 +451,42 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
 
               {/* STEP 3: Date & Time Slot */}
               {step === 3 && (
-                <div className="space-y-6">
-                  <span className="text-sm font-semibold tracking-wider text-primary uppercase block">Step 3 of 3: Select Date & Time</span>
+                <div className="space-y-6 animate-in slide-in-from-right-8 fade-in duration-500">
+                  <span className={currentTheme.stepText}>Step 3 of 3: Select Date & Time</span>
 
                   <div>
-                    <label className="block text-sm font-semibold text-accent/80 mb-2">Select Date</label>
-                    <input
-                      type="date"
-                      required
-                      min={todayStr}
+                    <label className={currentTheme.label}>Select Date</label>
+                    <CustomCalendar
                       value={selectedDate}
-                      onChange={(e) => setSelectedDate(e.target.value)}
-                      className="w-full px-4 py-3 border border-border-subtle rounded-brand focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-accent bg-background cursor-pointer text-[16px] sm:text-sm"
+                      onChange={setSelectedDate}
                     />
                   </div>
 
                   {/* Available Time Slots Grid */}
-                  <div>
-                    <label className="block text-sm font-semibold text-accent/80 mb-3">Available Times</label>
+                  <div className="min-h-[160px]">
+                    <label className={currentTheme.label}>Available Times</label>
                     
                     {!selectedDate ? (
-                      <p className="text-accent/50 text-sm text-center py-8 bg-accent/5 rounded-brand border border-dashed border-border-subtle">
+                      <p className="text-sm text-center py-8 border border-dashed rounded-xl border-border-subtle text-accent/50 bg-accent/5">
                         Please choose a date above to check availability.
                       </p>
                     ) : isLoadingSlots ? (
                       <div className="text-center py-12">
-                        <div className="animate-spin inline-block w-6 h-6 border-2 border-primary border-t-transparent rounded-full mb-2"></div>
-                        <p className="text-accent/60 text-xs">Checking availability...</p>
+                        <div className="animate-spin inline-block w-8 h-8 border-4 border-t-transparent rounded-full mb-4 border-primary"></div>
+                        <p className={currentTheme.label}>Checking availability...</p>
                       </div>
                     ) : availableSlots.length === 0 ? (
-                      <p className="text-red-500 text-sm text-center py-8 bg-red-50/50 rounded-brand border border-red-100">
+                      <p className="text-sm text-center py-8 rounded-xl border text-red-500 bg-red-50 border-red-100">
                         No available slots on this date. Please try another day.
                       </p>
                     ) : (
-                      <div className="grid grid-cols-3 gap-2">
+                      <div className="grid grid-cols-3 gap-3">
                         {availableSlots.map((slot) => (
                           <button
                             key={slot}
                             type="button"
                             onClick={() => setSelectedSlot(slot)}
-                            className={`py-3 rounded-brand text-xs font-semibold border transition-all ${
-                              selectedSlot === slot
-                                ? "bg-primary text-white border-primary shadow-sm"
-                                : "bg-transparent text-accent border-border-subtle hover:border-accent"
-                            }`}
+                            className={selectedSlot === slot ? currentTheme.slotBtnActive : currentTheme.slotBtn}
                           >
                             {formatTime(slot)}
                           </button>
@@ -503,28 +496,50 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
                   </div>
 
                   {selectedSlot && (
-                    <div className="bg-primary/5 p-4 rounded-brand border border-primary/20 text-sm">
+                    <div className="p-4 animate-in zoom-in-95 duration-300 bg-primary/10 rounded-xl border border-primary/20 backdrop-blur-sm mb-6">
                       <span className="font-semibold text-primary block mb-1">Selected Visit Time:</span>
-                      <p className="text-accent font-medium">{formatDateLabel(selectedDate)} at {formatTime(selectedSlot)}</p>
+                      <p className="text-gray-800 font-semibold">{formatDateLabel(selectedDate)} at {formatTime(selectedSlot)}</p>
                     </div>
                   )}
 
-                  <div className="flex gap-4 pt-4">
+                  {selectedSlot && (
+                    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                      <label className={currentTheme.label}>Is this your first visit to Aura Family Dental?</label>
+                      <div className="grid grid-cols-2 gap-4">
+                        <button
+                          type="button"
+                          onClick={() => setIsFirstVisit(true)}
+                          className={isFirstVisit ? currentTheme.slotBtnActive : currentTheme.slotBtn}
+                        >
+                          Yes
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setIsFirstVisit(false)}
+                          className={!isFirstVisit ? currentTheme.slotBtnActive : currentTheme.slotBtn}
+                        >
+                          No
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex gap-4 pt-8">
                     <button
                       type="button"
                       onClick={() => setStep(2)}
-                      className="flex-1 py-3 border border-border-subtle rounded-full font-semibold hover:border-accent transition-colors"
+                      className={`flex-1 py-4 ${currentTheme.secondaryBtn}`}
                     >
                       Back
                     </button>
                     <button
                       type="submit"
                       disabled={!selectedSlot || isSubmitting}
-                      className="flex-1 py-3 bg-primary text-white rounded-full font-semibold hover:bg-opacity-95 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:pointer-events-none"
+                      className={`flex-1 py-4 flex items-center justify-center gap-2 disabled:opacity-50 disabled:pointer-events-none ${currentTheme.primaryBtn}`}
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full"></div>
+                          <div className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full"></div>
                           Booking...
                         </>
                       ) : (

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Aura Family Dental Care | Premium & Honest Dentistry",
+  title: "Aura Family Dental Care",
   description: "Aura Family Dental Care provides an evidence-based, welcoming, and uniquely comfortable dental experience.",
 };
 

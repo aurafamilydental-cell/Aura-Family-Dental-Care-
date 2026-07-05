@@ -8,10 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedText } from "@/components/ui/animated-underline-text-one";
 
 const images = [
-  "/all smiles-1.JPG",
-  "/all smiles 2.JPG",
-  "/all smiles 3.JPG",
-  "/meet the team.JPG",
+  "/patients/all-smiles-1.webp",
+  "/patients/all-smiles-2.webp",
+  "/patients/all-smiles-3.webp",
+  "/staff/meet-the-team.webp",
 ];
 
 const wipeVariants: Record<string, any> = {

@@ -25,7 +25,7 @@ export default function EmergencyDentistry() {
             as="h1"
             text="Same-day dental emergency care."
             className="mb-6"
-            textClassName="text-h2 text-accent leading-tight whitespace-nowrap"
+            textClassName="text-h2 text-accent leading-tight"
             underlineClassName="text-primary"
           />
           <p className="text-accent/70 text-lg leading-relaxed max-w-2xl mx-auto font-body">
@@ -55,9 +55,9 @@ export default function EmergencyDentistry() {
             
             {/* Copy */}
             <div className="space-y-6">
-              <h2 className="text-3xl font-heading text-accent">We are here to help, when it hurts.</h2>
-              <p className="text-accent/70 text-lg leading-relaxed">
-                A dental emergency can be incredibly stressful. We prioritize getting you diagnosed, numb, and comfortable immediately. We will explain your options clearly so you can choose the best path forward.
+              <h2 className="text-h2 md:text-3xl font-heading text-accent leading-tight text-center md:text-left">We are here to help, when it hurts.</h2>
+              <p className="text-accent/70 text-lg leading-relaxed text-center md:text-left">
+                Dental emergencies are stressful. We prioritize getting you out of pain immediately and explaining your options clearly.
               </p>
               
               <div className="space-y-4 pt-4">
@@ -65,21 +65,21 @@ export default function EmergencyDentistry() {
                   <span className="text-red-500 font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Severe Toothache</h4>
-                    <p className="text-accent/60 text-base">Constant, throbbing pain that keeps you awake. We will isolate the issue and stop the pain.</p>
+                    <p className="text-accent/60 text-lg md:text-base">Constant, throbbing pain that keeps you awake. We will isolate the issue and stop the pain.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="text-red-500 font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Chipped or Broken Tooth</h4>
-                    <p className="text-accent/60 text-base">Rough edges can cut your tongue or lead to infection. We can seal and smooth the tooth in a single visit.</p>
+                    <p className="text-accent/60 text-lg md:text-base">Rough edges can cut your tongue or lead to infection. We can seal and smooth the tooth in a single visit.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <span className="text-red-500 font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Lost Crown or Filling</h4>
-                    <p className="text-accent/60 text-base">Exposed nerves are highly sensitive. We can replace filling material or re-cement crowns quickly.</p>
+                    <p className="text-accent/60 text-lg md:text-base">Exposed nerves are highly sensitive. We can replace filling material or re-cement crowns quickly.</p>
                   </div>
                 </div>
               </div>

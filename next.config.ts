@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ["googleapis"],
   images: {
     qualities: [75, 90, 95],
     remotePatterns: [

@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Logo */}
           <div className="shrink-0 md:w-56">
             <Link href="/" className="flex items-center justify-center md:justify-start">
-              <Image src="/logo-footer-transparent.png" alt="Aura Dental Logo" width={250} height={250} className="w-auto h-28 md:h-48 object-contain" />
+              <Image src="/brand/logo-footer-transparent.webp" alt="Aura Dental Logo" width={250} height={250} className="w-auto h-28 md:h-48 object-contain" />
             </Link>
           </div>
 
