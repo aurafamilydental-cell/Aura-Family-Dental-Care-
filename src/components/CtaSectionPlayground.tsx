@@ -110,7 +110,7 @@ export default function CtaSectionPlayground() {
             <ScrollRevealItem className="rounded-brand overflow-hidden shadow-md bg-white border border-purple-100/40 flex flex-col">
               <div className="relative h-64 w-full">
                 <Image 
-                  src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=600" 
+                  src="/patients/doctor-patient.webp" 
                   alt="Happy Patient" 
                   fill 
                   className="object-cover"

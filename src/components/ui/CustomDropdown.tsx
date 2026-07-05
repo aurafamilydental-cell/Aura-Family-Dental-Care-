@@ -36,7 +36,7 @@ export default function CustomDropdown({ value, onChange, options }: CustomDropd
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-4 py-3 border border-white/50 bg-white/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-accent backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex items-center justify-between"
+        className="w-full px-4 py-3 border border-white/50 bg-white/50 rounded-xl focus:outline-none focus:border-gray-400 focus:ring-0 text-accent backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex items-center justify-between"
       >
         <div className="flex items-center gap-3">
           {selectedOption.icon && (
