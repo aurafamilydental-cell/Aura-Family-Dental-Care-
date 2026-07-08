@@ -3,7 +3,7 @@ export const TREATMENT_DURATIONS: Record<string, number> = {
   "Cosmetic Consultation": 30,
   "Tooth Pain / Restorative": 60,
   "Emergency Visit": 60,
-  "Child Pediatric Visit": 30,
+  "Child Dental Care": 30,
   "Other": 60,
 };
 

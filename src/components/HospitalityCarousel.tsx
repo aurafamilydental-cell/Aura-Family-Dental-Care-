@@ -26,7 +26,7 @@ const slides: SlideData[] = [
     buttonText: "Reserve Game Session",
   },
   {
-    title: "No Clinical Atmosphere",
+    title: "Designed for Your Comfort",
     description: "No sterile, chemical smells. No loud drilling noises echoing down the hall. Just ambient acoustic design and warm lighting to soothe your senses.",
     image: "/facilities/no-styrile.webp",
     buttonText: "Tour Our Clinic",
@@ -213,7 +213,7 @@ export default function HospitalityCarousel() {
               style={{ x: cardX, y: cardY }}
               className="p-2 text-white flex flex-col items-start"
             >
-              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading mb-5 text-white leading-[1.15] font-normal tracking-tight">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading mb-5 text-white leading-[1.15] font-normal tracking-tight md:whitespace-nowrap">
                 {slides[activeIdx].title}
               </h3>
               <p className="text-sm md:text-base lg:text-lg text-white leading-relaxed font-body font-light mb-8 max-w-lg md:max-w-xl">

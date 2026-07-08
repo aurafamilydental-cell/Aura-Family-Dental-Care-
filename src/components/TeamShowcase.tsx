@@ -90,7 +90,7 @@ export default function TeamShowcase() {
           <p className="text-white/90 text-base md:text-lg leading-relaxed font-body mb-10 max-w-2xl mx-auto drop-shadow-md">
             {BodyText}
           </p>
-          <Link href="/team" className="inline-block bg-primary text-white px-10 py-4 rounded-full hover:bg-opacity-90 transition-all duration-300 text-sm uppercase font-semibold tracking-widest shadow-lg hover:shadow-xl hover:scale-[1.01]">
+          <Link href="/about" className="inline-block bg-primary text-white px-10 py-4 rounded-full hover:bg-opacity-90 transition-all duration-300 text-sm uppercase font-semibold tracking-widest shadow-lg hover:shadow-xl hover:scale-[1.01]">
             Learn More About Our Team
           </Link>
         </div>

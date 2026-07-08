@@ -1,9 +1,43 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { absoluteUrl, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, BUSINESS } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Aura Family Dental Care",
-  description: "Aura Family Dental Care provides an evidence-based, welcoming, and uniquely comfortable dental experience.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} | Dental Clinic in Koforidua`,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: BUSINESS.description,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  alternates: {
+    canonical: SITE_URL,
+  },
+  openGraph: {
+    title: `${SITE_NAME} | Dental Clinic in Koforidua`,
+    description: BUSINESS.description,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: absoluteUrl(DEFAULT_OG_IMAGE),
+        width: 1200,
+        height: 630,
+        alt: "Aura Family Dental Care clinic in Koforidua, Ghana",
+      },
+    ],
+    locale: "en_GH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} | Dental Clinic in Koforidua`,
+    description: BUSINESS.description,
+    images: [absoluteUrl(DEFAULT_OG_IMAGE)],
+  },
 };
 
 import CookieBanner from "@/components/CookieBanner";

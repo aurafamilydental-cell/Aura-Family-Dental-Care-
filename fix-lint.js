@@ -4,7 +4,7 @@ const fs = require('fs');
 
 try {
   // Get eslint output in json format
-  const output = execSync('npx eslint "src/**/*.{ts,tsx}" --format json', { encoding: 'utf8' });
+  execSync('npx eslint "src/**/*.{ts,tsx}" --format json', { encoding: 'utf8' });
   console.log('No lint errors!');
 } catch (error) {
   const report = JSON.parse(error.stdout);

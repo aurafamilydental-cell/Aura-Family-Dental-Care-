@@ -30,6 +30,7 @@ export const ServiceCardsPlayground: React.FC<ServiceCardsPlaygroundProps> = ({ 
               src={service.image}
               alt={service.alt}
               fill
+              unoptimized
               className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
               sizes="(max-width: 768px) 100vw, 25vw"
             />

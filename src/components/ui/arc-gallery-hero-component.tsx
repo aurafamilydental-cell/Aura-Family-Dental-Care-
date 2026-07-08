@@ -166,10 +166,10 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
       <div className="relative z-10 flex-1 flex items-center justify-center px-6 mt-0 md:-mt-48 lg:-mt-64 pb-16 md:pb-20">
         <div className={`text-center max-w-4xl px-6 opacity-0 ${isInView ? 'animate-fade-in' : ''}`} style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}>
           <h2 className="text-accent font-heading font-normal leading-[1.1] mb-6 max-w-3xl mx-auto" style={{ fontSize: 'clamp(32px, 7vw, 68px)' }}>
-            We know this isn't your favorite place to be.
+            Step into a welcoming space designed for your dental wellbeing.
           </h2>
           <p className="text-accent/70 text-lg md:text-xl mb-10 max-w-3xl mx-auto font-body leading-relaxed">
-            That's exactly why we built this one differently. No sterile smells, no lectures, and no judgment. Just clinical excellence wrapped in genuine hospitality.
+            Welcome to a different kind of dentistry. We focus on your comfort and overall wellbeing to provide a truly exceptional, personalized dental experience.
           </p>
 
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 interface BeforeAfterSliderProps {
   beforeImage: string;
@@ -19,27 +20,27 @@ export default function BeforeAfterSlider({
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleMove = (clientX: number) => {
+  const handleMove = useCallback((clientX: number) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
     const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
     setSliderPosition(percentage);
-  };
+  }, []);
 
-  const handleTouchMove = (e: TouchEvent) => {
+  const handleTouchMove = useCallback((e: TouchEvent) => {
     if (!isDragging) return;
     handleMove(e.touches[0].clientX);
-  };
+  }, [handleMove, isDragging]);
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!isDragging) return;
     handleMove(e.clientX);
-  };
+  }, [handleMove, isDragging]);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setIsDragging(false);
-  };
+  }, []);
 
   useEffect(() => {
     if (isDragging) {
@@ -55,7 +56,7 @@ export default function BeforeAfterSlider({
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleMouseUp);
     };
-  }, [isDragging]);
+  }, [handleMouseMove, handleMouseUp, handleTouchMove, isDragging]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -69,15 +70,17 @@ export default function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative aspect-[4/3] w-full bg-accent/5 rounded-brand border border-border-subtle overflow-hidden shadow-sm select-none cursor-ew-resize"
+      className="relative aspect-[4/3] w-full bg-accent/5 rounded-brand border border-border-subtle overflow-hidden shadow-sm select-none cursor-ew-resize touch-none"
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
     >
       {/* Before Image (Base) */}
-      <img
+      <Image
         src={beforeImage}
         alt="Before transformation"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        fill
+        sizes="(max-width: 1024px) 85vw, 50vw"
+        className="object-cover pointer-events-none"
         onError={(e) => {
           // Fallback if image doesn't exist
           e.currentTarget.style.display = "none";
@@ -95,10 +98,12 @@ export default function BeforeAfterSlider({
           clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
         }}
       >
-        <img
+        <Image
           src={afterImage}
           alt="After transformation"
-          className="absolute inset-0 w-full h-full object-cover"
+          fill
+          sizes="(max-width: 1024px) 85vw, 50vw"
+          className="object-cover"
           onError={(e) => {
             e.currentTarget.style.display = "none";
           }}

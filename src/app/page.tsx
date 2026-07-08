@@ -28,6 +28,8 @@ import TeamShowcase from "@/components/TeamShowcase";
 import PatientReviews from "@/components/PatientReviews";
 import HowItWorks from "@/components/HowItWorks";
 import { ServiceCardsPlayground } from "@/components/ServiceCardsPlayground";
+import JsonLd from "@/components/JsonLd";
+import { localBusinessJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const arcImages = [
   "/patients/doctor-patient.webp",
@@ -57,6 +59,7 @@ export default function Home() {
       <Header />
 
       <main className="flex-grow">
+        <JsonLd data={[localBusinessJsonLd(), websiteJsonLd()]} />
         {/* ========================================================
 
             STAGE 1: BRAND EMPATHY (Purple Smiling Lady Hero)
@@ -94,9 +97,9 @@ export default function Home() {
                 </span>
 
                 <span className="text-[10px] sm:text-xs text-[#141414]/80 uppercase tracking-widest font-bold leading-tight">
-                  Expert
+                  Professional
                   <br />
-                  Specialists
+                  Staff
                 </span>
               </div>
 
@@ -161,9 +164,7 @@ export default function Home() {
                   </h3>
 
                   <p className="text-accent/70 text-base leading-relaxed max-w-md">
-                    We specialize in dental anxiety. No judgment, no lectures,
-                    and no shame. Read our comfort guide to see how we make your
-                    visit completely stress-free.
+                    Whether it's been six months or six years, we're just happy to see you. Let us help you achieve a healthy smile at your own pace. Read our comfort guide to see how we make your visit completely stress-free.
                   </p>
                 </div>
 
@@ -179,14 +180,14 @@ export default function Home() {
 
               <div className="relative w-full md:w-[42%] h-48 md:h-auto overflow-hidden">
                 <Image
-                  src="/services/been-in-years-desktop-v2.png"
+                  src="/services/been in--mobile.png"
                   alt="Smiling patient getting her teeth examined by a friendly dentist wearing purple gloves"
                   fill
                   className="hidden md:block object-cover transition-transform duration-500 ease-out"
                   sizes="33vw"
                 />
                 <Image
-                  src="/services/been-in-years-mobile-v2.png"
+                  src="/services/been-in-years_1448x1086.jpg"
                   alt="Smiling patient getting her teeth examined by a friendly dentist wearing purple gloves"
                   fill
                   className="block md:hidden object-cover transition-transform duration-500 ease-out"
@@ -200,7 +201,7 @@ export default function Home() {
             {/* Path 2: Cosmetic Seekers */}
 
             <ScrollRevealItem className="flex-none w-[85vw] sm:w-[300px] md:w-auto snap-center shrink-0 md:shrink md:col-span-1 relative overflow-hidden bg-white rounded-brand border border-border-subtle hover:border-primary/20 shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col min-h-[200px] md:min-h-[300px]">
-              <div className="relative w-full h-44 overflow-hidden">
+              <div className="relative w-full h-48 overflow-hidden">
                 <Image
                   src="/services/transform-your-smile.png"
                   alt="Close-up of a beautifully whitened, bright natural smile"
@@ -217,8 +218,7 @@ export default function Home() {
                   </h3>
 
                   <p className="text-accent/70 text-base leading-relaxed">
-                    Explore hand-crafted smile enhancements, gentle whitening,
-                    and conservative cosmetic consulting.
+                    Whether you're looking for subtle brightness or a complete transformation, we offer customized solutions crafted for your perfect smile.
                   </p>
                 </div>
 
@@ -292,7 +292,7 @@ export default function Home() {
               <ScrollReveal staggerChildren={0.1}>
                 <ScrollRevealItem className="mb-6">
                   <AnimatedText
-                    text="Welcome to hospitality."
+                    text="Welcome to a true dental home"
                     textClassName="text-h2 text-accent font-heading font-normal"
                     underlineClassName="text-primary"
                   />
@@ -300,9 +300,7 @@ export default function Home() {
 
                 <ScrollRevealItem>
                   <p className="text-accent/70 text-lg max-w-2xl mx-auto">
-                    Leave clinical anxiety at the door. Our space is
-                    intentionally designed to look, feel, and smell like a
-                    high-end lounge.
+                    Leave your worries at the door. Our space is intentionally designed to look, feel, and smell like a welcoming home.
                   </p>
                 </ScrollRevealItem>
               </ScrollReveal>
@@ -353,14 +351,6 @@ export default function Home() {
             <ServiceCardsPlayground
               services={[
                 {
-                  title: "Dental Implants",
-                  description:
-                    "Restore your smile and confidence with our durable, natural-looking dental implants",
-                  image: "/services/dental-implants-v3.webp",
-                  alt: "A close-up of a smiling Black person showing healthy white teeth, with a circular magnifier overlay detailing a titanium dental implant screw embedded in the gum line and jawbone",
-                  link: "/services/restorative",
-                },
-                {
                   title: "Teeth Whitening",
                   description:
                     "Achieve a bright, radiant smile with our professional teeth whitening treatments",
@@ -383,6 +373,14 @@ export default function Home() {
                   image: "/services/routine-checkups-v3.webp",
                   alt: "A smiling Black man reclining in a dental chair while a dentist in blue gloves holds dental mirrors for a checkup",
                   link: "/services/family",
+                },
+                {
+                  title: "Dental Implants",
+                  description:
+                    "Restore your smile and confidence with our durable, natural-looking dental implants",
+                  image: "/services/dent implant.jpeg",
+                  alt: "A close-up of a smiling Black person showing healthy white teeth, with a circular magnifier overlay detailing a titanium dental implant screw embedded in the gum line and jawbone",
+                  link: "/services/restorative",
                 },
               ]}
             />

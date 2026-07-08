@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { ScrollReveal, ScrollRevealItem } from "@/components/ui/scroll-reveal";
 import { AnimatedText } from "@/components/ui/animated-underline-text-one";
 

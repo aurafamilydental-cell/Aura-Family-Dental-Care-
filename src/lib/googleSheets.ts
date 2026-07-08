@@ -1,5 +1,7 @@
+import "server-only";
+
 import { google } from "googleapis";
-import { BookingDetails } from "./googleCalendar";
+import { CLINIC_TIME_ZONE, type BookingDetails } from "./googleCalendar";
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
@@ -40,7 +42,11 @@ export async function appendBookingToSheet(details: BookingDetails): Promise<boo
     
     // Format the date/time nicely
     const submissionDate = new Date().toISOString();
-    const appointmentTime = new Date(details.timeSlot).toLocaleString();
+    const appointmentTime = new Date(details.timeSlot).toLocaleString("en-GB", {
+      dateStyle: "medium",
+      timeStyle: "short",
+      timeZone: CLINIC_TIME_ZONE,
+    });
 
     // Create a structured row array
     const row = [

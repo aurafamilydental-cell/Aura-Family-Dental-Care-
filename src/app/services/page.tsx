@@ -42,7 +42,7 @@ export default function ServicesHub() {
       link: "/services/family",
       linkText: "Read About Family Care",
       icon: Users,
-      image: "/services/family-care-bento-black.png", 
+      image: "/services/family.png", 
     },
     {
       id: 'restorative',
@@ -56,7 +56,7 @@ export default function ServicesHub() {
     },
     {
       id: 'pediatric',
-      title: "Pediatric Dentistry",
+      title: "Child Dental Care",
       desc: "Making dental visits fun for kids. We take things slow, use simple terms, and build positive relationships with young smiles early on.",
       link: "/services/pediatric",
       linkText: "Read About Children's Care",
