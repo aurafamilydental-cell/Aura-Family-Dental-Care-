@@ -72,7 +72,7 @@ export default function FamilyDentistry() {
             {/* Graphic Image */}
             <div className="relative aspect-[4/3] rounded-brand overflow-hidden border border-primary/10">
               <Image
-                src="/family-care-bento-black.png"
+                src="/services/family.png"
                 alt="Family Comfort & Convenience"
                 fill
                 className="object-cover"

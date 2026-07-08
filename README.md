@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aura Family Dental Care Clinic
 
-## Getting Started
+Next.js website for Aura Family Dental Care, a dental clinic serving patients in Koforidua, Ghana. The site includes marketing pages, service pages, patient comfort content, and an online booking drawer connected to Google Calendar and optional Google Sheets logging.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js 16 App Router
+- React 19
+- Tailwind CSS 4
+- TypeScript
+- Google Calendar API
+- Google Sheets API
+- Vercel Analytics and Speed Insights
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Use `npm.cmd` instead of `npm` in PowerShell if script execution policy blocks `npm.ps1`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm.cmd run dev
+```
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+Create `.env.local` in the project root. Next.js only loads env files from the root, not from `src`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Required for live Google Calendar booking:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REFRESH_TOKEN=
+GOOGLE_CALENDAR_ID=
+```
 
-## Deploy on Vercel
+Optional for Google Sheets booking logs:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+GOOGLE_SHEET_ID=
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If Google credentials are missing in local development, the booking helpers fall back to mock availability and simulated bookings so the UI can still be tested.
+
+## Booking Flow
+
+1. The user opens the booking drawer and selects patient details, treatment reason, date, and time.
+2. The browser calls `/api/availability` to get available appointment slots.
+3. The browser posts the completed booking to `/api/book`.
+4. The server creates the appointment in Google Calendar.
+5. If `GOOGLE_SHEET_ID` is configured, the server also appends the booking to Google Sheets.
+
+Google Calendar and Sheets helpers are marked server-only. They must stay behind API routes and must not be imported into client components.
+
+## Clinic Timezone
+
+The clinic timezone is set to `Africa/Accra`.
+
+Ghana uses GMT year-round, so appointment slots are generated and stored against Accra local clinic hours without daylight-saving shifts.
+
+## Fonts
+
+The header uses a local Inter variable font file stored at:
+
+```txt
+public/fonts/inter-latin-wght-normal.woff2
+```
+
+This avoids production builds depending on a live Google Fonts request.
+
+## Useful Commands
+
+```bash
+npm run lint
+npm run build
+npm run start
+```
+
+In PowerShell:
+
+```bash
+npm.cmd run lint
+npm.cmd run build
+npm.cmd run start
+```
+
+## Deployment
+
+The project is intended for Vercel deployment. Configure the same Google environment variables in the Vercel project settings before enabling live booking.
+
+After deployment, test:
+
+- Homepage and route navigation
+- Booking availability lookup
+- Booking submission
+- Google Calendar event creation
+- Google Sheets row logging, if enabled

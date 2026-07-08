@@ -1,12 +1,17 @@
-/* eslint-disable */
 "use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = localFont({
+  src: "../../../public/fonts/inter-latin-wght-normal.woff2",
+  weight: "100 900",
+  style: "normal",
+  display: "swap",
+});
 
 export function HeaderV1() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,7 +60,14 @@ export function HeaderV1() {
             className="flex items-center z-10"
           >
             <div className="flex items-center">
-              <img src="/brand/New-Aura-Logo.png" alt="Aura Family Dental Care" className="h-7 xl:h-10 w-auto object-contain scale-[2.1] xl:scale-[1.5] origin-left transition-all duration-500" />
+              <Image
+                src="/brand/New-Aura-Logo.png"
+                alt="Aura Family Dental Care"
+                width={160}
+                height={64}
+                priority
+                className="h-7 xl:h-10 w-auto object-contain scale-[2.1] xl:scale-[1.5] origin-left transition-all duration-500"
+              />
               <div className={`flex flex-col ml-8 sm:ml-10 xl:ml-5 ${inter.className} w-max transition-colors duration-300`}>
                 <span className={`font-bold text-base xl:text-lg leading-none tracking-wide uppercase transition-colors duration-300 ${textColor}`}>AURA FAMILY</span>
                 <div className={`flex w-full justify-between mt-0.5 text-[9px] xl:text-[10px] font-semibold uppercase transition-colors duration-300 ${subTextColor}`}>

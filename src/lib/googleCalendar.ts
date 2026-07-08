@@ -1,3 +1,5 @@
+import "server-only";
+
 import { google } from "googleapis";
 
 export interface BookingDetails {
@@ -20,6 +22,7 @@ const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const GOOGLE_REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN;
 const GOOGLE_CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID || "primary";
+export const CLINIC_TIME_ZONE = "Africa/Accra";
 
 // Define working hours per day of week (0 = Sunday, 6 = Saturday)
 const WORKING_HOURS: Record<number, { start: number; end: number } | null> = {
@@ -31,6 +34,10 @@ const WORKING_HOURS: Record<number, { start: number; end: number } | null> = {
   5: { start: 8, end: 18 }, // Friday: 8 AM - 6 PM
   6: { start: 9, end: 14 }, // Saturday: 9 AM - 2 PM
 };
+
+function getClinicDate(dateStr: string, hour: number, minute: number = 0) {
+  return new Date(`${dateStr}T${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}:00+00:00`);
+}
 
 /**
  * Initializes and returns the authenticated Google Calendar client
@@ -67,14 +74,16 @@ export async function getCalendarAvailability(dateStr: string, durationMinutes: 
 
     const calendar = getCalendarClient();
 
-    // Set time limits for our query (start of work day to end of work day in UTC/local)
-    const timeMin = new Date(`${dateStr}T${String(hours.start).padStart(2, "0")}:00:00Z`).toISOString();
-    const timeMax = new Date(`${dateStr}T${String(hours.end).padStart(2, "0")}:00:00Z`).toISOString();
+    // Ghana uses GMT year-round. Keep the timezone explicit so clinic hours
+    // remain tied to Africa/Accra instead of the server's local timezone.
+    const timeMin = getClinicDate(dateStr, hours.start).toISOString();
+    const timeMax = getClinicDate(dateStr, hours.end).toISOString();
 
     const response = await calendar.events.list({
       calendarId: GOOGLE_CALENDAR_ID,
       timeMin: timeMin,
       timeMax: timeMax,
+      timeZone: CLINIC_TIME_ZONE,
       singleEvents: true,
       orderBy: "startTime",
     });
@@ -86,7 +95,7 @@ export async function getCalendarAvailability(dateStr: string, durationMinutes: 
     const availableSlots: string[] = [];
     for (let hour = hours.start; hour < hours.end; hour++) {
       for (const minute of [0, 30]) {
-        const slotStart = new Date(`${dateStr}T${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}:00Z`);
+        const slotStart = getClinicDate(dateStr, hour, minute);
         const slotEnd = new Date(slotStart.getTime() + durationMinutes * 60 * 1000);
 
         // Don't generate slots that end after working hours
@@ -150,9 +159,11 @@ export async function bookAppointment(details: BookingDetails): Promise<boolean>
       description,
       start: {
         dateTime: start.toISOString(),
+        timeZone: CLINIC_TIME_ZONE,
       },
       end: {
         dateTime: end.toISOString(),
+        timeZone: CLINIC_TIME_ZONE,
       },
       attendees: [
         { email: details.email } // This sends the Google Calendar invite automatically!
@@ -183,16 +194,16 @@ export async function bookAppointment(details: BookingDetails): Promise<boolean>
  * Fallback mock generator for local testing/development
  */
 function getMockAvailability(dateStr: string, durationMinutes: number = 60): string[] {
-  const day = new Date(dateStr).getDay();
+  const day = new Date(`${dateStr}T00:00:00+00:00`).getUTCDay();
   if (day === 0) return []; // Sunday Closed
 
   const hours = WORKING_HOURS[day] || { start: 9, end: 17 };
   const mockSlots: string[] = [];
-  const workEndTime = new Date(`${dateStr}T${String(hours.end).padStart(2, "0")}:00:00.000Z`);
+  const workEndTime = getClinicDate(dateStr, hours.end);
   
   for (let h = hours.start; h < hours.end; h++) {
     for (const m of [0, 30]) {
-      const slotStart = new Date(`${dateStr}T${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:00.000Z`);
+      const slotStart = getClinicDate(dateStr, h, m);
       const slotEnd = new Date(slotStart.getTime() + durationMinutes * 60 * 1000);
       
       if (slotEnd > workEndTime) continue;

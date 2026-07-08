@@ -163,7 +163,7 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
     { value: "Cosmetic Consultation", label: "Cosmetic Consultation", icon: Sparkles },
     { value: "Tooth Pain / Restorative", label: "Tooth Pain / Filling", icon: Activity },
     { value: "Emergency Visit", label: "Emergency Care", icon: PlusCircle },
-    { value: "Child Pediatric Visit", label: "Child Pediatric Visit", icon: Baby },
+    { value: "Child Dental Care", label: "Child Dental Care", icon: Baby },
     { value: "Other", label: "Other (Please specify)", icon: PlusCircle },
   ];
 

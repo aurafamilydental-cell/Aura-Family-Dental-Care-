@@ -73,7 +73,7 @@ export default function HeroSection({ onBooking }: HeroSectionProps) {
       <div className="absolute inset-0 z-0 bg-[#a819dd]">
         {/* Desktop Image */}
         <Image
-          src="/hero/color-hero.png"
+          src="/hero/kuks-2.png"
           alt="Hero Background"
           fill
           unoptimized
@@ -83,7 +83,7 @@ export default function HeroSection({ onBooking }: HeroSectionProps) {
         />
         {/* Mobile Image */}
         <Image
-          src="/hero/mobile-hero.png"
+          src="/hero/mob-hero.png"
           alt="Hero Background"
           fill
           unoptimized
@@ -94,14 +94,14 @@ export default function HeroSection({ onBooking }: HeroSectionProps) {
       </div>
 
       {/* Smooth Gradient Fade */}
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-t from-black/60 via-black/20 to-transparent md:bg-gradient-to-r md:from-black/30 md:via-transparent" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-32 md:pt-32 pb-8 md:pb-24 mt-auto md:mt-0 pointer-events-none">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col items-start text-left md:justify-center space-y-5 md:space-y-6 w-full md:w-auto">
-            <h1 className="text-[clamp(40px,10vw,80px)] leading-[1.1] font-medium tracking-tight text-white drop-shadow-sm">
-              Bright Smiles,<br />
-              Expert Care
+            <h1 className="text-[clamp(32px,5vw,64px)] leading-[1.1] font-medium tracking-tight text-white drop-shadow-sm">
+              <span className="block whitespace-nowrap">The Aura of quality,</span>
+              <span className="block">The art of dentistry</span>
             </h1>
             <p className="text-base sm:text-lg leading-relaxed max-w-2xl font-medium md:font-normal text-white/90 md:text-white/75">
               Exceptional dental care tailored to your needs, ensuring a confident<br className="hidden md:block" /> and radiant smile that you can proudly share with the world.

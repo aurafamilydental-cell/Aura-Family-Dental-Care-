@@ -20,7 +20,7 @@ export default function PediatricDentistry() {
       <main className="flex-grow pt-32">
         {/* Intro */}
         <section className="px-6 md:px-12 max-w-4xl mx-auto text-center mb-16">
-          <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">Pediatric Services</span>
+          <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">Child Dental Care</span>
           <AnimatedText
             as="h1"
             text="Gentle dental care built for growing smiles."
@@ -72,7 +72,7 @@ export default function PediatricDentistry() {
             {/* Graphic Image */}
             <div className="relative aspect-[4/3] rounded-brand overflow-hidden border border-primary/10">
               <Image
-                src="/kids section.JPG"
+                src="/facilities/kids-section.webp"
                 alt="Gentle First Visits - Stickers & treats after visits"
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center' }}

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { ScrollReveal, ScrollRevealItem } from "./ui/scroll-reveal";
 import { AnimatedText } from "./ui/animated-underline-text-one";
-import { cn } from "@/lib/utils";
 
 export default function CtaSectionPlayground() {
   const handleOpenBooking = (e?: React.MouseEvent) => {
@@ -93,7 +92,7 @@ export default function CtaSectionPlayground() {
               </button>
 
               <a
-                href="tel:+1234567890"
+                href="tel:+233544079966"
                 className="w-full sm:w-auto border-2 border-white/40 hover:border-white hover:bg-white/5 text-white px-7 py-3.5 rounded-full font-semibold transition-all flex items-center justify-center gap-2"
               >
                 Call Us Now
@@ -130,7 +129,7 @@ export default function CtaSectionPlayground() {
                   <button onClick={handleOpenBooking} className="px-6 py-3.5 rounded-full font-semibold transition-all flex items-center justify-center w-full bg-primary text-white hover:bg-[#0f0521] shadow-lg shadow-primary/20">
                     Schedule Your First Visit
                   </button>
-                  <a href="tel:+1234567890" className="px-6 py-3.5 rounded-full font-semibold transition-all flex items-center justify-center text-center w-full border-2 border-accent/20 hover:border-accent hover:bg-accent/5 text-accent">
+                  <a href="tel:+233544079966" className="px-6 py-3.5 rounded-full font-semibold transition-all flex items-center justify-center text-center w-full border-2 border-accent/20 hover:border-accent hover:bg-accent/5 text-accent">
                     Call Us Now
                   </a>
                 </div>
