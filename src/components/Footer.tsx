@@ -65,7 +65,7 @@ export default function Footer() {
 
         {/* Bottom Text */}
         <div className="text-center text-[11px] font-medium text-white/90 tracking-wide">
-          © {new Date().getFullYear()} All rights Reserved • Aura • Dental Clinic • 75914
+          © {new Date().getFullYear()} All rights Reserved • Aura Family Dental Care
         </div>
       </div>
     </footer>
