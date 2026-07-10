@@ -235,7 +235,7 @@ export default function HospitalityCarousel() {
       <button
         onClick={handlePrev}
         className={cn(
-          "absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 backdrop-blur-sm text-white flex items-center justify-center transition-all duration-300 cursor-pointer shadow-md",
+          "absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 backdrop-blur-sm text-white hidden md:flex items-center justify-center transition-all duration-300 cursor-pointer shadow-md",
           isHovered ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4 pointer-events-none"
         )}
         aria-label="Previous slide"
@@ -255,7 +255,7 @@ export default function HospitalityCarousel() {
       <button
         onClick={handleNext}
         className={cn(
-          "absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 backdrop-blur-sm text-white flex items-center justify-center transition-all duration-300 cursor-pointer shadow-md",
+          "absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 backdrop-blur-sm text-white hidden md:flex items-center justify-center transition-all duration-300 cursor-pointer shadow-md",
           isHovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4 pointer-events-none"
         )}
         aria-label="Next slide"

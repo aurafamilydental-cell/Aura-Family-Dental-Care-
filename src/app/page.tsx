@@ -390,7 +390,7 @@ export default function Home() {
             <div className="flex justify-end mt-6 md:mt-12">
               <Link
                 href="/services"
-                className="bg-[#0f0521] text-white hover:bg-primary px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center gap-2 cursor-pointer"
+                className="bg-black text-white hover:bg-black/90 px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center gap-2 cursor-pointer"
               >
                 See More
               </Link>

@@ -7,12 +7,12 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://aurafamilydental.com";
 
-export const DEFAULT_OG_IMAGE = "/hero/banner.webp";
+export const DEFAULT_OG_IMAGE = "/brand/aura_logo_open_graph_1_91.png";
 
 export const BUSINESS = {
   name: SITE_NAME,
   description:
-    "Aura Family Dental Care is a family dental clinic in Koforidua, Ghana, offering conservative, comfort-first dental care for adults, children, and families.",
+    "A true dental home with a caring, experienced team. Improve your oral well-being with advanced, safe, and personalized procedures tailored just for you.",
   email: "aurafamilydentalclinic@gmail.com",
   telephone: "+233544079966",
   alternateTelephone: "+233205245565",
@@ -43,7 +43,7 @@ export const routes: RouteSeo[] = [
     path: "/",
     title: "Dental Clinic in Koforidua, Ghana",
     description:
-      "Visit Aura Family Dental Care in Koforidua for comfort-first family, cosmetic, pediatric, emergency, and restorative dental care.",
+      "A true dental home with a caring, experienced team. Improve your oral well-being with advanced, safe, and personalized procedures tailored just for you.",
     priority: 1,
     changeFrequency: "weekly",
   },
