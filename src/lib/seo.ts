@@ -2,10 +2,9 @@ import type { Metadata, MetadataRoute } from "next";
 
 export const SITE_NAME = "Aura Family Dental Care";
 
-// TODO: Confirm the production domain before launch if it differs.
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://aurafamilydental.com";
+  "https://www.aurafamilydentalcare.org";
 
 export const DEFAULT_OG_IMAGE = "/brand/aura_logo_open_graph_1_91.png";
 
