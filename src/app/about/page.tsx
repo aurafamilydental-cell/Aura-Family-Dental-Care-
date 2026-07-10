@@ -127,7 +127,7 @@ export default function About() {
     // Desktop View: Original Hover Behavior
     if (!isMobile) {
       return (
-        <div className="relative group overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100 shadow-sm transition-all duration-300 hover:shadow-xl cursor-pointer w-full h-full">
+        <div className="relative group overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100 shadow-sm transition-all duration-300 hover:shadow-xl cursor-pointer w-full">
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 z-10 mix-blend-multiply"></div>
           <Image src={member.image} alt={member.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700" />
           
@@ -151,12 +151,12 @@ export default function About() {
 
     return (
       <div 
-        className="relative group w-full h-full cursor-pointer"
+        className="relative group w-full aspect-[4/5] cursor-pointer"
         style={{ perspective: "1000px" }}
         onClick={() => setTappedCardIndex(isTapped ? null : index)}
       >
         <div 
-          className={`w-full h-full relative transition-transform duration-700 aspect-[4/5]`} 
+          className={`w-full h-full relative transition-transform duration-700`} 
           style={{ 
             transformStyle: "preserve-3d",
             transform: isTapped ? "rotateY(180deg)" : "rotateY(0deg)"
@@ -172,7 +172,7 @@ export default function About() {
             }}
           >
             <div 
-              className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 z-10 mix-blend-multiply"
+              className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 z-10 mix-blend-multiply rounded-2xl"
               style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
             ></div>
             <Image 
@@ -180,7 +180,7 @@ export default function About() {
               alt={member.name} 
               fill 
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" 
-              className="object-cover" 
+              className="object-cover rounded-2xl" 
               style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
             />
             <div 
