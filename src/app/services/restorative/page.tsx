@@ -69,7 +69,7 @@ export default function RestorativeDentistry() {
                   <span className="text-primary font-bold">✓</span>
                   <div>
                     <h4 className="font-heading text-accent text-lg">Bridges & Dental Prosthetics</h4>
-                    <p className="text-accent/60 text-lg md:text-base">Reliable, custom-fitted solutions like bridges and dentures to replace missing teeth and restore your bite's full functionality and appearance.</p>
+                    <p className="text-accent/60 text-lg md:text-base">Reliable, custom-fitted solutions like bridges and dentures to replace missing teeth and restore your bite&apos;s full functionality and appearance.</p>
                   </div>
                 </div>
               </div>

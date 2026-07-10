@@ -163,19 +163,48 @@ export default function About() {
           }}
         >
           {/* Front */}
-          <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-sm bg-gray-100" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 z-10 mix-blend-multiply"></div>
-            <Image src={member.image} alt={member.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
-            <div className="absolute bottom-6 left-6 right-6 z-20">
-              <h3 className="font-heading text-2xl text-white drop-shadow-md mb-1">{member.name}</h3>
-              <p className="text-white/90 text-base drop-shadow-md font-medium">{member.role}</p>
+          <div 
+            className="absolute inset-0 rounded-2xl overflow-hidden shadow-sm bg-gray-100" 
+            style={{ 
+              backfaceVisibility: "hidden", 
+              WebkitBackfaceVisibility: "hidden",
+              transform: "translateZ(1px)"
+            }}
+          >
+            <div 
+              className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 z-10 mix-blend-multiply"
+              style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+            ></div>
+            <Image 
+              src={member.image} 
+              alt={member.name} 
+              fill 
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" 
+              className="object-cover" 
+              style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+            />
+            <div 
+              className="absolute bottom-6 left-6 right-6 z-20"
+              style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "translateZ(2px)" }}
+            >
+              <h3 className="font-heading text-2xl text-white drop-shadow-md mb-1" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>{member.name}</h3>
+              <p className="text-white/90 text-base drop-shadow-md font-medium" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>{member.role}</p>
             </div>
           </div>
           {/* Back */}
-          <div className="absolute inset-0 rounded-2xl bg-white p-6 shadow-xl flex flex-col justify-center border border-gray-100" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
-            <h3 className="font-heading text-xl text-accent mb-1">{member.name}</h3>
-            <p className="text-primary font-semibold mb-4">{member.role}</p>
-            <p className="text-accent/80 text-sm leading-relaxed mb-4">{member.description}</p>
+          <div 
+            className="absolute inset-0 rounded-2xl bg-white p-6 shadow-xl flex flex-col justify-center border border-gray-100" 
+            style={{ 
+              backfaceVisibility: "hidden", 
+              WebkitBackfaceVisibility: "hidden", 
+              transform: "rotateY(180deg) translateZ(1px)"
+            }}
+          >
+            <div style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "translateZ(2px)" }}>
+              <h3 className="font-heading text-xl text-accent mb-1">{member.name}</h3>
+              <p className="text-primary font-semibold mb-4">{member.role}</p>
+              <p className="text-accent/80 text-sm leading-relaxed mb-4">{member.description}</p>
+            </div>
           </div>
         </div>
       </div>

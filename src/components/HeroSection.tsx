@@ -98,10 +98,11 @@ export default function HeroSection({ onBooking }: HeroSectionProps) {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-32 md:pt-32 pb-8 md:pb-24 mt-auto md:mt-0 pointer-events-none">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="flex flex-col items-start text-left md:justify-center space-y-5 md:space-y-6 w-full md:w-auto">
+          <div className="flex flex-col items-start text-left md:justify-center space-y-5 md:space-y-6 w-full md:w-auto relative">
+            <div className="absolute -inset-x-4 -inset-y-8 md:-inset-12 bg-black/30 blur-[40px] md:blur-[60px] rounded-[100%] -z-10 pointer-events-none" />
             <h1 className="text-[clamp(32px,5vw,64px)] leading-[1.1] font-medium tracking-tight text-white drop-shadow-sm">
-              <span className="block whitespace-nowrap">The Aura of quality,</span>
-              <span className="block">The art of dentistry</span>
+              <span className="block whitespace-nowrap">The Aura Of Quality,</span>
+              <span className="block">The Art Of Dentistry</span>
             </h1>
             <p className="text-base sm:text-lg leading-relaxed max-w-2xl font-medium md:font-normal text-white/90 md:text-white/75">
               Exceptional dental care tailored to your needs, ensuring a confident<br className="hidden md:block" /> and radiant smile that you can proudly share with the world.
