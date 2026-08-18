@@ -261,7 +261,7 @@ export default function About() {
           <div className="hidden md:block bg-primary text-white py-20 px-12">
             <div className="max-w-7xl mx-auto grid grid-cols-3 gap-12 text-left">
               <div>
-                <h3 className="text-3xl lg:text-4xl font-heading mb-4">No Upselling</h3>
+                <h3 className="text-3xl lg:text-4xl font-heading mb-4">Care with Integrity</h3>
                 <p className="text-white/90 text-base lg:text-lg leading-relaxed">
                   We practice conservative dentistry. We suggest solutions only when they are clinically necessary to protect your oral health. You will never feel pushed to buy clinical gimmicks.
                 </p>
@@ -285,7 +285,7 @@ export default function About() {
           <div className="md:hidden flex flex-col w-full">
             {/* Item 1 */}
             <div className="bg-primary text-white py-12 px-6">
-              <h3 className="text-4xl font-heading">No Upselling</h3>
+              <h3 className="text-4xl font-heading">Care with Integrity</h3>
             </div>
             <div className="bg-white text-accent py-10 px-6 border-b border-gray-100">
               <p className="text-accent/40 text-[10px] font-bold tracking-widest uppercase mb-3">Conservative Care</p>
@@ -324,17 +324,14 @@ export default function About() {
             <div className="order-2 lg:order-2">
               <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">Founder Story</span>
               <h2 className="text-3xl md:text-4xl font-heading text-accent mb-6 leading-tight">
-                "I hated going to the dentist, too."
+                Aura Family Dental Care was founded from a simple belief: visiting the dentist should be a comforting experience, not a frightening one.
               </h2>
               <div className="space-y-6 text-accent/70 text-lg md:text-xl leading-relaxed">
                 <p>
-                  Growing up, dental visits were a source of deep anxiety for me. The cold rooms, sharp smells, and lectures about flossing left me feeling ashamed rather than cared for. 
+                  Having experienced dental anxiety firsthand, I was inspired to create a practice where every patient feels welcomed, respected, and cared for. Our clinic combines modern dentistry with compassion, offering a warm, family-friendly environment where trust comes first.
                 </p>
                 <p>
-                  When I decided to become a dentist, I resolved to build a practice that did the exact opposite. Aura was built to feel like home. Our clinical tools are cutting-edge, but our approach is grounded in empathy, safety, and respect for your time.
-                </p>
-                <p>
-                  We don't judge how long it's been since your last cleaning, we don't upsell cosmetic trends, and we only suggest work that is absolutely necessary for your health. That is our promise.
+                  I am guided by a passion for improving oral health and this makes me committed to making quality dental care accessible to everyone, promoting prevention, and helping patients of all ages achieve healthy, confident smiles without fear or any hesitation. I have you at heart.
                 </p>
               </div>
             </div>
