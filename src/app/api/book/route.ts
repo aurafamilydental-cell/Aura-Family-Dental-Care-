@@ -22,8 +22,8 @@ export async function POST(request: NextRequest) {
     const success = await bookAppointment(body);
 
     if (success) {
-      // Log to Google Sheets asynchronously (doesn't block response)
-      appendBookingToSheet(body).catch((err) => console.error("Sheets log failed:", err));
+      // Log to Google Sheets (await to prevent serverless suspension before completion)
+      await appendBookingToSheet(body);
 
       return NextResponse.json({ success: true, message: "Appointment booked successfully!" });
     } else {
