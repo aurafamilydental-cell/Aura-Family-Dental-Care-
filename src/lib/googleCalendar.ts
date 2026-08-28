@@ -93,6 +93,9 @@ export async function getCalendarAvailability(dateStr: string, durationMinutes: 
 
     // Generate possible 30-minute slots
     const availableSlots: string[] = [];
+    // Get current time in clinic timezone (Africa/Accra is GMT+0 year-round)
+    const now = new Date();
+
     for (let hour = hours.start; hour < hours.end; hour++) {
       for (const minute of [0, 30]) {
         const slotStart = getClinicDate(dateStr, hour, minute);
@@ -100,6 +103,9 @@ export async function getCalendarAvailability(dateStr: string, durationMinutes: 
 
         // Don't generate slots that end after working hours
         if (slotEnd > workEndTime) continue;
+
+        // Don't generate slots that are in the past (for today's date)
+        if (slotStart <= now) continue;
 
         // Check if any event overlaps with this slot
         const isOverlapping = events.some((event) => {
