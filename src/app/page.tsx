@@ -10,7 +10,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CtaSectionPlayground from "@/components/CtaSectionPlayground";
 
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import BeforeAfterSplitCard from "@/components/BeforeAfterSplitCard";
 
 import BookingDrawer from "@/components/BookingDrawer";
 
@@ -450,9 +450,9 @@ export default function Home() {
               {/* Right Column: Before/After Interactive Component */}
 
               <ScrollRevealItem className="w-[95%] sm:w-[85%] mx-auto md:w-full">
-                <BeforeAfterSlider
-                  beforeImage="/patients/after.png"
-                  afterImage="/patients/smile-before-damaged.jpg"
+                <BeforeAfterSplitCard
+                  beforeImage="/patients/smile-before-damaged.jpg"
+                  afterImage="/patients/after.png"
                   beforeLabel="Before Aura"
                   afterLabel="After Aura"
                 />

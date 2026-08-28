@@ -41,7 +41,11 @@ export async function appendBookingToSheet(details: BookingDetails): Promise<boo
     const sheets = getSheetsClient();
     
     // Format the date/time nicely
-    const submissionDate = new Date().toISOString();
+    const submissionDate = new Date().toLocaleString("en-GB", {
+      dateStyle: "medium",
+      timeStyle: "short",
+      timeZone: CLINIC_TIME_ZONE,
+    });
     const appointmentTime = new Date(details.timeSlot).toLocaleString("en-GB", {
       dateStyle: "medium",
       timeStyle: "short",
@@ -62,13 +66,15 @@ export async function appendBookingToSheet(details: BookingDetails): Promise<boo
       details.childName || "N/A", // 10. Child Name
       details.childAge || "N/A", // 11. Child Age
       details.familyMembers || "N/A", // 12. Family Members
-      "Website" // 13. Booking Source
+      "Website", // 13. Booking Source
+      "Pending" // 14. Status
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: GOOGLE_SHEET_ID,
       range: "Sheet1!A1", // Assumes the first sheet is named Sheet1
       valueInputOption: "USER_ENTERED",
+      insertDataOption: "INSERT_ROWS",
       requestBody: {
         values: [row],
       },
