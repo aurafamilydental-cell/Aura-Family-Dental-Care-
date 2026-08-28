@@ -39,12 +39,14 @@ export default function PatientReviews() {
                 </p>
               </ScrollRevealItem>
               <ScrollRevealItem className="hidden lg:block">
-                <button 
-                  onClick={handleOpenBooking}
-                  className="bg-primary text-white hover:bg-[#0f0521] px-8 py-3.5 rounded-full font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
+                <a 
+                  href="https://www.google.com/search?q=aura+family+dental+care&oq=aur&gs_lcrp=EgZjaHJvbWUqCQgAECMYJxjjAjIJCAAQIxgnGOMCMgwIARAuGCcYrwEYxwEyBggCEEUYOTIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQgyMjc2ajBqN6gCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0xfdf6b007f5e8453:0xb8ffc148a9db0430,1,,,,"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-primary text-white hover:bg-[#0f0521] px-8 py-3.5 rounded-full font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
                 >
                   Read More Stories
-                </button>
+                </a>
               </ScrollRevealItem>
             </ScrollReveal>
           </div>
@@ -119,12 +121,14 @@ export default function PatientReviews() {
         <div className="mt-2 flex justify-center lg:hidden">
           <ScrollReveal>
             <ScrollRevealItem>
-              <button 
-                onClick={handleOpenBooking}
-                className="bg-primary text-white hover:bg-[#0f0521] px-8 py-3.5 rounded-full font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
+              <a 
+                href="https://www.google.com/search?q=aura+family+dental+care&oq=aur&gs_lcrp=EgZjaHJvbWUqCQgAECMYJxjjAjIJCAAQIxgnGOMCMgwIARAuGCcYrwEYxwEyBggCEEUYOTIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQgyMjc2ajBqN6gCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0xfdf6b007f5e8453:0xb8ffc148a9db0430,1,,,,"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-primary text-white hover:bg-[#0f0521] px-8 py-3.5 rounded-full font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
               >
                 Read More Stories
-              </button>
+              </a>
             </ScrollRevealItem>
           </ScrollReveal>
         </div>
