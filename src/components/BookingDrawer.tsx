@@ -173,10 +173,10 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
     card: "p-5 border border-gray-100 bg-gray-50 rounded-2xl shadow-sm hover:bg-gray-100 hover:scale-[1.01] transition-all group",
     cardText: "text-accent group-hover:text-primary transition-colors",
     input: "w-full px-4 py-3 border border-gray-200 bg-white rounded-xl focus:outline-none focus:border-gray-400 focus:ring-0 text-[16px] text-accent [&:-webkit-autofill]:shadow-[inset_0_0_0px_1000px_white] [&:-webkit-autofill]:-webkit-text-fill-color-accent",
-    primaryBtn: "bg-gradient-to-r from-primary to-purple-500 text-white rounded-full shadow-lg shadow-primary/30 hover:shadow-xl hover:scale-[1.02] transition-all",
+    primaryBtn: "bg-gradient-to-r from-primary to-purple-500 text-white rounded-full hover:scale-[1.02] transition-all",
     secondaryBtn: "border border-gray-200 bg-white text-accent rounded-full hover:bg-gray-50 transition-all",
     slotBtn: "py-3 rounded-xl text-xs font-semibold border border-gray-200 bg-gray-50 text-accent hover:bg-gray-100 transition-all",
-    slotBtnActive: "py-3 rounded-xl text-xs font-semibold bg-gradient-to-r from-primary to-purple-500 text-white shadow-md shadow-primary/30",
+    slotBtnActive: "py-3 rounded-xl text-xs font-semibold bg-gradient-to-r from-primary to-purple-500 text-white",
     stepText: "text-sm font-medium tracking-wider text-primary/80 uppercase block",
     label: "block text-sm font-semibold text-accent/80 mb-2",
     h3: "text-2xl font-heading text-accent",
@@ -228,7 +228,7 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
 
           {bookingSuccess ? (
             <div className="h-full flex flex-col items-center justify-center text-center p-6 animate-in zoom-in-95 duration-500">
-              <div className="w-24 h-24 rounded-full flex items-center justify-center mb-6 bg-gradient-to-r from-primary to-purple-500 text-white shadow-xl shadow-primary/30">
+              <div className="w-24 h-24 rounded-full flex items-center justify-center mb-6 bg-gradient-to-r from-primary to-purple-500 text-white">
                 <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path></svg>
               </div>
               <h4 className={currentTheme.h3 + " mb-3"}>Booking Confirmed!</h4>
