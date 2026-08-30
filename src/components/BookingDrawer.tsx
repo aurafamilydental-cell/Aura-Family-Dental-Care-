@@ -91,6 +91,7 @@ export default function BookingDrawer({ isOpen: initialIsOpen, onClose }: Bookin
   // Handle Form Submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return; // Prevent double-clicks
     setIsSubmitting(true);
     setErrorMessage("");
 
